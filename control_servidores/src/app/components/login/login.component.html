@@ -1,0 +1,15 @@
+<div class="body">
+  <div class="login">
+    <form [formGroup]="form" (ngSubmit)="login()">
+      <img src="./assets/logo.svg" style="width: 70%; margin-top: 5%" />
+      <h1>Inicia sesión con tu número de empleado</h1>
+      <mat-form-field class="width_input" appearance="fill">
+        <mat-label>Número de empleado</mat-label>
+        <input matInput formControlName="empleado" />
+      </mat-form-field>
+      <button type = "submit" class="width_input button_login" mat-raised-button color="primary">
+        Ingresar
+      </button>
+    </form>
+  </div>
+</div>
