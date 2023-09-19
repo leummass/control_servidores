@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent {
   form: FormGroup;
+  numemp: number;
   constructor(private formBuilder: FormBuilder){
     this.form = this.formBuilder.group({
       empleado: ['', Validators.required]
@@ -15,5 +16,7 @@ export class LoginComponent {
   }
   login(){
     console.log(this.form);
+    console.log(this.form.value.empleado);
+    
   }
 }

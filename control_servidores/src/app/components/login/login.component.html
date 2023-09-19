@@ -5,7 +5,7 @@
       <h1>Inicia sesión con tu número de empleado</h1>
       <mat-form-field class="width_input" appearance="fill">
         <mat-label>Número de empleado</mat-label>
-        <input matInput formControlName="empleado" />
+        <input matInput formControlName="empleado" type="number" min=0 ng-pattern ="^[0-9]*[0-9]+[0-9]*$"/>
       </mat-form-field>
       <button type = "submit" class="width_input button_login" mat-raised-button color="primary">
         Ingresar
