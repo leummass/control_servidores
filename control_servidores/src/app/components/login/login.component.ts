@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class LoginComponent {
   form: FormGroup;
   numemp: number;
   cargando: boolean = false;
-  constructor(private formBuilder: FormBuilder, private loginService:LoginService){
+  constructor(private formBuilder: FormBuilder, private loginService:LoginService, private router:Router){
     this.form = this.formBuilder.group({
       empleado: ['', Validators.required,]
     })
@@ -21,6 +22,7 @@ export class LoginComponent {
     if(this.loginService.login(this.numemp)){
       console.log("Logged in");
       this.falsoCargando();
+      
     }else{
       console.log("No se pudo iniciar sesión");
       this.form.reset();
@@ -31,7 +33,7 @@ export class LoginComponent {
     this.cargando=true;
     setTimeout(()=>{
       //añadir routing
-      this.cargando=false;
+      this.router.navigate(['inicio']);
     },1500);
   }
 }
