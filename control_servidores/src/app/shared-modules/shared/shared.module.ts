@@ -5,6 +5,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 //Modules
@@ -18,7 +23,10 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatSidenavModule,
     MatProgressSpinnerModule,
+    MatToolbarModule,
+    MatIconModule,
     ReactiveFormsModule,
     FormsModule
   ],
@@ -29,6 +37,9 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
     FormsModule
   ]
 })
