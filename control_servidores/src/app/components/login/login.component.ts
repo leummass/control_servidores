@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -9,14 +10,28 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent {
   form: FormGroup;
   numemp: number;
-  constructor(private formBuilder: FormBuilder){
+  cargando: boolean = false;
+  constructor(private formBuilder: FormBuilder, private loginService:LoginService){
     this.form = this.formBuilder.group({
-      empleado: ['', Validators.required]
+      empleado: ['', Validators.required,]
     })
   }
   login(){
-    console.log(this.form);
-    console.log(this.form.value.empleado);
+    this.numemp=this.form.value.empleado;
+    if(this.loginService.login(this.numemp)){
+      console.log("Logged in");
+      this.falsoCargando();
+    }else{
+      console.log("No se pudo iniciar sesión");
+      this.form.reset();
+    }
     
+  }
+  falsoCargando(){
+    this.cargando=true;
+    setTimeout(()=>{
+      //añadir routing
+      this.cargando=false;
+    },1500);
   }
 }

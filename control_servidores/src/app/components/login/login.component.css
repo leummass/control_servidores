@@ -31,3 +31,6 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+.spinner{
+    margin: 0 auto;
+}

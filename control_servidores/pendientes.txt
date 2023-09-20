@@ -1,0 +1,6 @@
+1. añadir conexiones a bases de datos para verificacion de login
+2. añadir conexiones para consulta de catalogos y pantallas
+3. añadir conexiones para añadir/modificar elementos de los catalogos y pantallas, con un dialog al momento de darle a añadir, en el caso de servidores se debe de abrir otro dialog para las ips
+4. añadir conexiones y pantallas para agregar nuevos usuarios
+5. añadir un toaster para cuando no permita iniciar sesión.
+
