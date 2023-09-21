@@ -25,6 +25,6 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class ServiciosComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['Nombre', 'UrlProduccion', 'IpProduccion', 'Dns'];
   dataSource = ELEMENT_DATA;
 }

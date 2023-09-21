@@ -9,7 +9,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTable, MatTableModule} from '@angular/material/table';
-
+import {MatDividerModule} from '@angular/material/divider';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -28,6 +28,7 @@ import { FormsModule } from '@angular/forms';
     MatProgressSpinnerModule,
     MatToolbarModule,
     MatIconModule,
+    MatDividerModule,
     ReactiveFormsModule,
     MatTableModule,
     FormsModule
@@ -43,6 +44,7 @@ import { FormsModule } from '@angular/forms';
     MatToolbarModule,
     MatIconModule,
     MatTableModule,
+    MatDividerModule,
     FormsModule
   ]
 })
