@@ -1,12 +1,31 @@
 <p>
-    <mat-toolbar color="primary">
-      <button mat-icon-button  aria-label="botón menú">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>Catálogo de servidores y servicios</span>
-      <span class="spacer"></span>
-      <button mat-icon-button  aria-label="botón cerrar sesión/logout">
-        <mat-icon>logout</mat-icon>
-      </button>
-    </mat-toolbar>
+  <mat-toolbar color="primary">
+    <button mat-icon-button aria-label="botón menú" (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Catálogo de servidores y servicios</span>
+    <span class="spacer"></span>
+    <button mat-icon-button aria-label="botón cerrar sesión/logout">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
+
+
+
+
+
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="push">
+        <button mat-button color="primary">Catálogo de servidores</button>
+        <button mat-button color="primary">Añadir servidor</button>
+        <button mat-button color="primary">Catálogo de servicios</button>
+        <button mat-button color="primary">Añadir servicio</button>
+    </mat-sidenav>
+    <mat-sidenav-content > dsdds </mat-sidenav-content>
+  </mat-sidenav-container>
+
+
+
+
 </p>
