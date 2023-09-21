@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -13,12 +13,13 @@ export class LoginComponent {
   numemp: number;
   cargando: boolean = false;
   constructor(private formBuilder: FormBuilder, private loginService:LoginService, private router:Router){
-    this.form = this.formBuilder.group({
-      empleado: ['', Validators.required,]
+    this.form = new FormGroup({
+      empleado: new FormControl ('', [Validators.required,Validators.minLength(8),Validators.pattern('^[0-9]+$')])
     })
   }
   login(){
     this.numemp=this.form.value.empleado;
+    console.log(this.form.get('empleado'));
     if(this.loginService.login(this.numemp)){
       console.log("Logged in");
       this.falsoCargando();
@@ -35,5 +36,21 @@ export class LoginComponent {
       //añadir routing
       this.router.navigate(['inicio']);
     },1500);
+  }
+  MensajeError(){
+    let error:string = "";
+    if(this.form.get('empleado')?.hasError('minlength')){
+      error = "La longitud mínima es 8"
+    }
+    
+    if(this.form.get('empleado')?.hasError('pattern')){
+      error = "Solo se aceptan números"
+    }
+    
+    if(this.form.get('empleado')?.hasError('required')){
+      error = "Campo requerido"
+    }
+
+    return error;
   }
 }

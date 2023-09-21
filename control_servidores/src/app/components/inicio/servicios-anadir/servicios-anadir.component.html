@@ -4,43 +4,54 @@
       </mat-toolbar>
     <div class="form_anadir_servicio">
   <form [formGroup]="form" (ngSubmit)="enviar()">
-    <mat-form-field class="input_form" appearance="fill">
+
+    <mat-form-field class="input_form" appearance="outline">
       <mat-label>Nombre</mat-label>
       <input matInput formControlName="nombre_servicio" type="text" required />
+      <mat-error *ngIf="form.get('nombre_servicio')">{{ MensajeError(form.get('nombre_servicio')?.errors) }}</mat-error>
     </mat-form-field>
-    <mat-form-field class="input_form" appearance="fill">
+
+    <mat-form-field class="input_form" appearance="outline">
       <mat-label>URL producción</mat-label>
       <input matInput formControlName="url_prod" type="text" required />
     </mat-form-field>
-    <mat-form-field class="input_form" appearance="fill">
+
+    <mat-form-field class="input_form" appearance="outline">
       <mat-label>IP Producción</mat-label>
       <input matInput formControlName="ip_prod" type="text" required />
     </mat-form-field>
-    <mat-form-field class="input_form" appearance="fill">
+
+    <mat-form-field class="input_form" appearance="outline">
         <mat-label>URL Desarrollo</mat-label>
         <input matInput formControlName="url_des" type="text" required />
       </mat-form-field>
-    <mat-form-field class="input_form" appearance="fill">
+
+    <mat-form-field class="input_form" appearance="outline">
       <mat-label>IP Desarrollo</mat-label>
       <input matInput formControlName="ip_des" type="text" required />
     </mat-form-field>
-    <mat-form-field class="input_form" appearance="fill">
+
+    <mat-form-field class="input_form" appearance="outline">
       <mat-label>URL Tester</mat-label>
       <input matInput formControlName="url_test" type="text" required />
     </mat-form-field>
-    <mat-form-field class="input_form" appearance="fill">
+
+    <mat-form-field class="input_form" appearance="outline">
       <mat-label>IP Tester</mat-label>
       <input matInput formControlName="ip_test" type="text" required />
     </mat-form-field>
-    <mat-form-field class="input_form" appearance="fill">
+
+    <mat-form-field class="input_form" appearance="outline">
       <mat-label>DNS</mat-label>
       <input matInput formControlName="dns" type="text" required />
     </mat-form-field>
-    <mat-form-field class="input_form" appearance="fill">
+
+    <mat-form-field class="input_form" appearance="outline">
       <mat-label>Usuario</mat-label>
       <input matInput formControlName="usuario" type="text" required />
     </mat-form-field>
-    <mat-form-field class="input_form" appearance="fill">
+
+    <mat-form-field class="input_form" appearance="outline">
       <mat-label>Contraseña</mat-label>
       <input matInput formControlName="contrasena" type="text" required />
     </mat-form-field>

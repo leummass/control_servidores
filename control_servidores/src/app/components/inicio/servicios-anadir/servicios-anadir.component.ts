@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-servicios-anadir',
@@ -28,5 +28,13 @@ export class ServiciosAnadirComponent {
 
   enviar(){
       console.log(this.form);
+  }
+  MensajeError(errores: ValidationErrors | null | undefined){
+    let mensajeerror:string ="";
+    if(errores){
+      Object.keys(errores).forEach(error => {
+
+      })
+    }
   }
 }

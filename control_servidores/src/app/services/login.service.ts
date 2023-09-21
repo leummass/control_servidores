@@ -9,9 +9,6 @@ export class LoginService{
         
     }
     login(numemp:number){
-        if(numemp>900)
-            return true;
-        else
-            return false;
+        return true;
     }
 }
