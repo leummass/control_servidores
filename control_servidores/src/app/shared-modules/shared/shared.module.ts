@@ -8,6 +8,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatTable, MatTableModule} from '@angular/material/table';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -28,6 +29,7 @@ import { FormsModule } from '@angular/forms';
     MatToolbarModule,
     MatIconModule,
     ReactiveFormsModule,
+    MatTableModule,
     FormsModule
   ],
   exports: [
@@ -40,6 +42,7 @@ import { FormsModule } from '@angular/forms';
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
+    MatTableModule,
     FormsModule
   ]
 })
