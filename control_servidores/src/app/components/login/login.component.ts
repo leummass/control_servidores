@@ -33,7 +33,7 @@ export class LoginComponent {
   falsoCargando(){
     this.cargando=true;
     setTimeout(()=>{
-      //añadir routing
+      //Agregar routing
       this.router.navigate(['inicio']);
     },1500);
   }

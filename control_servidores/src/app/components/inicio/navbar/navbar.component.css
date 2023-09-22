@@ -1,10 +1,9 @@
-.spacer{
-    flex: 1 1 auto;
-}
-
 mat-sidenav{
     width:20%;
     background-color: #EAE8E8;
+}
+mat-sidenav button{
+    font-size:1vw;
 }
 
 mat-sidenav-container{

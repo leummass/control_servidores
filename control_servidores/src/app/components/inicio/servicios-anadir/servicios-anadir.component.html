@@ -1,70 +1,121 @@
 <div class="container">
-    <mat-toolbar>
-        <span class="spacer">Catálogo de servidores</span>
-      </mat-toolbar>
-    <div class="form_anadir_servicio">
-  <form [formGroup]="form" (ngSubmit)="enviar()">
+  <mat-toolbar>
+    <span class="spacer">Agregar servidores</span>
+  </mat-toolbar>
+  <div class="form_anadir">
+    <form [formGroup]="form" (ngSubmit)="enviar()">
+      <mat-grid-list cols="4" rowHeight="90px">
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field class="input_form" appearance="outline">
+            <mat-label>URL producción</mat-label>
+            <input matInput formControlName="url_prod" type="text" required />
+            <mat-error *ngIf="form.get('url_prod')?.errors">
+              {{ MensajeError("url_prod") }}
+            </mat-error>
+          </mat-form-field>
 
-    <mat-form-field class="input_form" appearance="outline">
-      <mat-label>Nombre</mat-label>
-      <input matInput formControlName="nombre_servicio" type="text" required />
-      <mat-error *ngIf="form.get('nombre_servicio')">{{ MensajeError(form.get('nombre_servicio')?.errors) }}</mat-error>
-    </mat-form-field>
+          <mat-form-field class="input_form" appearance="outline">
+            <mat-label>IP Producción</mat-label>
+            <input matInput formControlName="ip_prod" type="text" required />
+            <mat-error *ngIf="form.get('ip_prod')?.errors">
+              {{ MensajeError("ip_prod") }}
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
 
-    <mat-form-field class="input_form" appearance="outline">
-      <mat-label>URL producción</mat-label>
-      <input matInput formControlName="url_prod" type="text" required />
-    </mat-form-field>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field class="input_form" appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input
+              matInput
+              formControlName="nombre_servicio"
+              type="text"
+              required
+            />
+            <mat-error *ngIf="form.get('nombre_servicio')?.errors">
+              {{ MensajeError("nombre_servicio") }}
+            </mat-error>
+          </mat-form-field>
 
-    <mat-form-field class="input_form" appearance="outline">
-      <mat-label>IP Producción</mat-label>
-      <input matInput formControlName="ip_prod" type="text" required />
-    </mat-form-field>
+          <mat-form-field class="input_form" appearance="outline">
+            <mat-label>DNS</mat-label>
+            <input matInput formControlName="dns" type="text" required />
+            <mat-error *ngIf="form.get('dns')?.errors">
+              {{ MensajeError("dns") }}
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
 
-    <mat-form-field class="input_form" appearance="outline">
-        <mat-label>URL Desarrollo</mat-label>
-        <input matInput formControlName="url_des" type="text" required />
-      </mat-form-field>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field class="input_form" appearance="outline">
+            <mat-label>URL Desarrollo</mat-label>
+            <input matInput formControlName="url_des" type="text" required />
+            <mat-error *ngIf="form.get('url_des')?.errors">
+              {{ MensajeError("url_des") }}
+            </mat-error>
+          </mat-form-field>
 
-    <mat-form-field class="input_form" appearance="outline">
-      <mat-label>IP Desarrollo</mat-label>
-      <input matInput formControlName="ip_des" type="text" required />
-    </mat-form-field>
+          <mat-form-field class="input_form" appearance="outline">
+            <mat-label>IP Desarrollo</mat-label>
+            <input matInput formControlName="ip_des" type="text" required />
+            <mat-error *ngIf="form.get('ip_des')?.errors">
+              {{ MensajeError("ip_des") }}
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
 
-    <mat-form-field class="input_form" appearance="outline">
-      <mat-label>URL Tester</mat-label>
-      <input matInput formControlName="url_test" type="text" required />
-    </mat-form-field>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field class="input_form" appearance="outline">
+            <mat-label>Usuario</mat-label>
+            <input matInput formControlName="usuario" type="text" required />
+            <mat-error *ngIf="form.get('usuario')?.errors">
+              {{ MensajeError("usuario") }}
+            </mat-error>
+          </mat-form-field>
 
-    <mat-form-field class="input_form" appearance="outline">
-      <mat-label>IP Tester</mat-label>
-      <input matInput formControlName="ip_test" type="text" required />
-    </mat-form-field>
+          <mat-form-field class="input_form" appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input matInput formControlName="contrasena" type="text" required />
+            <mat-error *ngIf="form.get('contrasena')?.errors">
+              {{ MensajeError("contrasena") }}
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
 
-    <mat-form-field class="input_form" appearance="outline">
-      <mat-label>DNS</mat-label>
-      <input matInput formControlName="dns" type="text" required />
-    </mat-form-field>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field class="input_form" appearance="outline">
+            <mat-label>URL Tester</mat-label>
+            <input matInput formControlName="url_test" type="text" required />
+            <mat-error *ngIf="form.get('url_test')?.errors">
+              {{ MensajeError("url_test") }}
+            </mat-error>
+          </mat-form-field>
 
-    <mat-form-field class="input_form" appearance="outline">
-      <mat-label>Usuario</mat-label>
-      <input matInput formControlName="usuario" type="text" required />
-    </mat-form-field>
+          <mat-form-field class="input_form" appearance="outline">
+            <mat-label>IP Tester</mat-label>
+            <input matInput formControlName="ip_test" type="text" required />
+            <mat-error *ngIf="form.get('ip_test')?.errors">
+              {{ MensajeError("ip_test") }}
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
 
-    <mat-form-field class="input_form" appearance="outline">
-      <mat-label>Contraseña</mat-label>
-      <input matInput formControlName="contrasena" type="text" required />
-    </mat-form-field>
+        <mat-grid-tile colspan="2" [rowspan]="1">
+          <button
+            type="submit"
+            class="width_input button_login"
+            [disabled]="form.invalid"
+            mat-raised-button
+            color="primary"
+          >
+            Agregar
+          </button>
 
-    <button
-      type="submit"
-      class="width_input button_login"
-      [disabled]="form.invalid"
-      mat-raised-button
-      color="primary"
-    >
-      Agregar
-    </button>
-  </form>
-</div>
+          <button mat-stroked-button color="warn" (click)="resetForm()">
+            Limpiar
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </div>
 </div>

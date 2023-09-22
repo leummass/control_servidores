@@ -25,16 +25,20 @@ export class ServiciosAnadirComponent {
 
     })
   }
-
   enviar(){
-      console.log(this.form);
-  }
-  MensajeError(errores: ValidationErrors | null | undefined){
-    let mensajeerror:string ="";
-    if(errores){
-      Object.keys(errores).forEach(error => {
 
-      })
+  }
+  MensajeError(nombre_campo:string){
+    const campo = this.form.get(nombre_campo);
+    if (campo?.hasError('required')) {
+      return 'Campo requerido';
     }
+    return ''
+  }
+  resetForm() {
+    this.form.reset();
+    Object.keys(this.form.controls).forEach((key) => {
+      this.form.get(key)?.setErrors(null);
+    });
   }
 }

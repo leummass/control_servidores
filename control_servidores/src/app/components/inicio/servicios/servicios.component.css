@@ -6,11 +6,6 @@
     width: 90%;
     margin:auto;
 }
-.spacer{
-    text-align: center;
-    color: #3F51B5;
-    flex: 1 1 auto;
-}
 .row_buttons{
     width:100%;
     padding-top: 1%;

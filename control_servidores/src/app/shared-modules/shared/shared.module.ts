@@ -10,7 +10,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTable, MatTableModule} from '@angular/material/table';
 import {MatDividerModule} from '@angular/material/divider';
-
+import {MatGridListModule} from '@angular/material/grid-list';
 import { ReactiveFormsModule } from '@angular/forms';
 
 //Modules
@@ -31,6 +31,7 @@ import { FormsModule } from '@angular/forms';
     MatDividerModule,
     ReactiveFormsModule,
     MatTableModule,
+    MatGridListModule,
     FormsModule
   ],
   exports: [
@@ -45,6 +46,7 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatTableModule,
     MatDividerModule,
+    MatGridListModule,
     FormsModule
   ]
 })
