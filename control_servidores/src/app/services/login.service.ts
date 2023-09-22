@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
+import { Usuario } from "../models/usuario.model";
 
 @Injectable()
 export class LoginService{
-    numemp:number;
-    puesto:string;
+    usuario:Usuario;
     constructor(private router: Router){
         
     }

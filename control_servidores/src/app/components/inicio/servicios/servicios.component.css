@@ -5,6 +5,7 @@
 .contenedor_tabla{
     width: 90%;
     margin:auto;
+    margin-top:1%;
 }
 .row_buttons{
     width:100%;
