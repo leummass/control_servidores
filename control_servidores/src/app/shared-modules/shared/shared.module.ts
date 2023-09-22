@@ -12,6 +12,10 @@ import {MatTable, MatTableModule} from '@angular/material/table';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatPaginator} from '@angular/material/paginator';
+
+
 
 //Modules
 import { FormsModule } from '@angular/forms';
@@ -32,6 +36,7 @@ import { FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     MatTableModule,
     MatGridListModule,
+    MatPaginatorModule,
     FormsModule
   ],
   exports: [
@@ -47,6 +52,7 @@ import { FormsModule } from '@angular/forms';
     MatTableModule,
     MatDividerModule,
     MatGridListModule,
+    MatPaginatorModule,
     FormsModule
   ]
 })
