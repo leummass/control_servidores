@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { PaginatorESP } from '../paginatoresp.component';
 
 export interface PeriodicElement {
   name: string;
@@ -43,14 +44,15 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
   selector: 'app-servicios',
   templateUrl: './servicios.component.html',
-  styleUrls: ['./servicios.component.css']
+  styleUrls: ['./servicios.component.css'],
+  providers: [{provide: MatPaginatorIntl, useClass: PaginatorESP}],
 })
 
 export class ServiciosComponent implements AfterViewInit{
   displayedColumns: string[] = ['Nombre', 'UrlProduccion', 'IpProduccion', 'Dns'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

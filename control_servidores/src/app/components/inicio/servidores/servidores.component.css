@@ -1,0 +1,18 @@
+.container{
+    width:100%;
+    margin-bottom: 5%;
+}
+.contenedor_tabla{
+    width: 90%;
+    margin:auto;
+    margin-top:0%;
+}
+.row_buttons{
+    width:100%;
+    padding-top: 1%;
+}
+.filtro{
+    margin-left:5%;
+    margin-top:0%;
+    padding-top:1%;
+}
