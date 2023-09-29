@@ -21,13 +21,10 @@ export class ServidoresAnadirComponent {
   constructor(private formBuilder: FormBuilder){
     this.form = this.formBuilder.group({
       nombre_servidor: ['', Validators.required,],
-      url_prod: ['', Validators.required,],
       ip_prod: ['', [Validators.required,Validators.pattern('(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])')]],
-      url_des: ['', Validators.required,],
       ip_des: ['',  [Validators.required,Validators.pattern('(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])')]],
-      url_test: ['', Validators.required,],
       ip_test: ['',  [Validators.required,Validators.pattern('(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])')]],
-      dns: ['', Validators.required,],
+      ip_drp: ['',  [Validators.required,Validators.pattern('(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])')]],
       descripcion: ['', Validators.required,],
       tipo: ['', Validators.required,]
 
