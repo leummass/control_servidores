@@ -1,1 +1,77 @@
-<p>servidores-anadir works!</p>
+<div class="container">
+    <mat-toolbar>
+      <span class="spacer">Agregar servidores</span>
+    </mat-toolbar>
+    <div class="form_anadir">
+      <form [formGroup]="form" (ngSubmit)="enviar()">
+        <mat-grid-list cols="4" rowHeight="90px">
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="input_form" appearance="outline">
+              <mat-label>Nombre</mat-label>
+              <input
+                matInput
+                formControlName="nombre_servidor"
+                type="text"
+                required
+              />
+              <mat-error *ngIf="form.get('nombre_servidor')?.errors">
+                {{ MensajeError("nombre_servidor") }}
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="2">
+            <mat-form-field class="input_form" appearance="outline">
+              <mat-label>Descripcion</mat-label>
+              <textarea
+                matInput
+                formControlName="descripcion"
+                type="text"
+                required
+              ></textarea>
+              <mat-error *ngIf="form.get('descripcion')?.errors">
+                {{ MensajeError("descripcion") }}
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="input_form" appearance="outline">
+              <mat-label>Tipo</mat-label>
+              <mat-select formControlName = "tipo" required>
+                <mat-option *ngFor="let servidor of tipo_serv" [value]="servidor.value">
+                  {{servidor.viewValue}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="form.get('descripcion')?.errors">
+                {{ MensajeError("descripcion") }}
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+  
+         
+  
+          
+  
+          
+  
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <button
+              type="submit"
+              class="width_input button_login"
+              [disabled]="form.invalid"
+              mat-raised-button
+              color="primary"
+            >
+              Agregar
+            </button>
+  
+            <button mat-stroked-button color="warn" (click)="resetForm()">
+              Limpiar
+            </button>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </form>
+    </div>
+  </div>
+  

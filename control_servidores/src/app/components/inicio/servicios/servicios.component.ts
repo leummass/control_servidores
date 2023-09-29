@@ -51,7 +51,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class ServiciosComponent implements AfterViewInit{
   displayedColumns: string[] = ['Nombre', 'UrlProduccion', 'IpProduccion', 'Dns'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
-
+  
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit() {
