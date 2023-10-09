@@ -8,6 +8,7 @@ import { ServidoresComponent } from './servidores/servidores.component';
 import { ServiciosComponent } from './servicios/servicios.component';
 import { ServiciosAnadirComponent } from './servicios-anadir/servicios-anadir.component';
 import { ServidoresAnadirComponent } from './servidores-anadir/servidores-anadir.component';
+import { VentanaAnadirIpComponent } from './servidores-anadir/ventana-anadir-ip/ventana-anadir-ip.component';
 
 
 
@@ -18,7 +19,8 @@ import { ServidoresAnadirComponent } from './servidores-anadir/servidores-anadir
     ServidoresComponent,
     ServiciosComponent,
     ServiciosAnadirComponent,
-    ServidoresAnadirComponent
+    ServidoresAnadirComponent,
+    VentanaAnadirIpComponent
   ],
   imports: [
     CommonModule,

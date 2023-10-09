@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -39,6 +40,7 @@ import { FormsModule } from '@angular/forms';
     MatGridListModule,
     MatPaginatorModule,
     MatSelectModule,
+    MatDialogModule,
     FormsModule
   ],
   exports: [
@@ -56,6 +58,7 @@ import { FormsModule } from '@angular/forms';
     MatGridListModule,
     MatPaginatorModule,
     MatSelectModule,
+    MatDialogModule,
     FormsModule
   ]
 })
