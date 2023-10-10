@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Catalogo_DetalleServidor } from 'src/app/models/catalogo_detalleservidor.model';
+import { Catalogo_Servidor } from 'src/app/models/catalogo_servidor.model';
+import { LoginService } from 'src/app/services/login.service';
 import { VentanaAnadirIpComponent } from './ventana-anadir-ip/ventana-anadir-ip.component';
 
 interface servidor {
@@ -14,15 +17,25 @@ interface servidor {
   styleUrls: ['./servidores-anadir.component.css'],
 })
 export class ServidoresAnadirComponent {
-
   form: FormGroup;
- 
+  numemp: string;
+  fecha:string;
+  servidor:Catalogo_Servidor;
+  detalle_drp: Catalogo_DetalleServidor;
+  detalle_test: Catalogo_DetalleServidor;
+  detalle_prod: Catalogo_DetalleServidor;
+  detalle_des: Catalogo_DetalleServidor;
+
   tipo_serv: servidor[] = [
     { value: 'tipo1', viewValue: 'tipo1' },
     { value: 'tipo2', viewValue: 'tipo2' },
     { value: 'tipo3', viewValue: 'tipo3' },
   ];
-  constructor(private formBuilder: FormBuilder, public ventana: MatDialog) {
+  constructor(
+    private formBuilder: FormBuilder,
+    public ventana: MatDialog,
+    public loginService: LoginService
+  ) {
     this.form = this.formBuilder.group({
       nombre_servidor: ['', Validators.required],
       ip_prod: [
@@ -64,9 +77,24 @@ export class ServidoresAnadirComponent {
       descripcion: ['', Validators.required],
       tipo: ['', Validators.required],
     });
+    this.numemp = loginService.usuario.NoColaborador;
+    this.fecha = new Date().toString();
   }
 
-  enviar() {}
+  ngOnInit() {}
+
+  enviar() {
+    let formValue = this.form.value;
+    this.servidor= new Catalogo_Servidor(
+      0,
+      formValue.nombre_servidor,
+      formValue.descripcion,
+      formValue.Tipo,
+      this.fecha,
+      this.numemp
+    )
+
+  }
   MensajeError(nombre_campo: string) {
     const campo = this.form.get(nombre_campo);
     if (campo?.hasError('required')) {
@@ -83,32 +111,98 @@ export class ServidoresAnadirComponent {
       this.form.get(key)?.setErrors(null);
     });
   }
+  setFecha() {
+    let fecha = new Date().toString();
+    this.detalle_des.FechaModificacion = fecha;
+    this.detalle_drp.FechaModificacion = fecha;
+    this.detalle_test.FechaModificacion = fecha;
+    this.detalle_prod.FechaModificacion = fecha;
+  }
 
   abrirVentana(tipo_ip: string) {
     const dialogRef = this.ventana.open(VentanaAnadirIpComponent, {
-      width:'70%',
-      enterAnimationDuration:'300ms',
-      exitAnimationDuration:'300ms',
+      width: '70%',
+      enterAnimationDuration: '300ms',
+      exitAnimationDuration: '300ms',
       data: { titulo: tipo_ip },
     });
     if (tipo_ip == 'IP Productiva') {
       dialogRef.afterClosed().subscribe((result) => {
-        console.log(result)
+        this.detalle_prod = new Catalogo_DetalleServidor(
+          0,
+          0,
+          result.resForm.ip,
+          result.resForm.dns,
+          result.resForm.tipo_serv,
+          result.resForm.version,
+          result.resForm.estatus,
+          result.resForm.hostname,
+          result.resForm.sistema_operativo,
+          result.resForm.ver_so,
+          result.resForm.ver_bd,
+          '',
+          this.numemp
+        );
         this.form.patchValue({ ip_prod: result.resForm.ip });
       });
     }
     if (tipo_ip == 'IP Tester') {
       dialogRef.afterClosed().subscribe((result) => {
+        this.detalle_test = new Catalogo_DetalleServidor(
+          0,
+          0,
+          result.resForm.ip,
+          result.resForm.dns,
+          result.resForm.tipo_serv,
+          result.resForm.version,
+          result.resForm.estatus,
+          result.resForm.hostname,
+          result.resForm.sistema_operativo,
+          result.resForm.ver_so,
+          result.resForm.ver_bd,
+          '',
+          this.numemp
+        );
         this.form.patchValue({ ip_test: result.resForm.ip });
       });
     }
     if (tipo_ip == 'IP DRP') {
       dialogRef.afterClosed().subscribe((result) => {
+        this.detalle_drp = new Catalogo_DetalleServidor(
+          0,
+          0,
+          result.resForm.ip,
+          result.resForm.dns,
+          result.resForm.tipo_serv,
+          result.resForm.version,
+          result.resForm.estatus,
+          result.resForm.hostname,
+          result.resForm.sistema_operativo,
+          result.resForm.ver_so,
+          result.resForm.ver_bd,
+          '',
+          this.numemp
+        );
         this.form.patchValue({ ip_drp: result.resForm.ip });
       });
     }
     if (tipo_ip == 'IP Desarrollo') {
       dialogRef.afterClosed().subscribe((result) => {
+        this.detalle_des = new Catalogo_DetalleServidor(
+          0,
+          0,
+          result.resForm.ip,
+          result.resForm.dns,
+          result.resForm.tipo_serv,
+          result.resForm.version,
+          result.resForm.estatus,
+          result.resForm.hostname,
+          result.resForm.sistema_operativo,
+          result.resForm.ver_so,
+          result.resForm.ver_bd,
+          '',
+          this.numemp
+        );
         this.form.patchValue({ ip_des: result.resForm.ip });
       });
     }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Catalogo_Servicio } from 'src/app/models/catalogo_servicio.model';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-servicios-anadir',
@@ -7,10 +9,12 @@ import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/f
   styleUrls: ['./servicios-anadir.component.css']
 })
 export class ServiciosAnadirComponent {
+  numemp:string;
+  fecha:string;
+  servicio: Catalogo_Servicio;
   form: FormGroup;
-  numemp: number;
-  cargando: boolean = false;
-  constructor(private formBuilder: FormBuilder){
+  
+  constructor(private formBuilder: FormBuilder, private loginService:LoginService){
     this.form = this.formBuilder.group({
       nombre_servicio: ['', Validators.required,],
       url_prod: ['', Validators.required,],
@@ -24,10 +28,28 @@ export class ServiciosAnadirComponent {
       contrasena: ['', Validators.required,]
 
     })
+    this.numemp = loginService.usuario.NoColaborador;
+    this.fecha = new Date().toString();
   }
   enviar(){
-
+    let formValue = this.form.value;
+    this.servicio = new Catalogo_Servicio(
+      0,
+      formValue.nombre_servicio,
+      formValue.url_prod,
+      formValue.ip_prod,
+      formValue.url_des,
+      formValue.ip_des,
+      formValue.url_test,
+      formValue.ip_test,
+      formValue.dns,
+      formValue.usuario,
+      formValue.contrasena,
+      this.fecha,
+      this.numemp
+    );
   }
+
   MensajeError(nombre_campo:string){
     const campo = this.form.get(nombre_campo);
     if (campo?.hasError('required')) {
@@ -38,6 +60,7 @@ export class ServiciosAnadirComponent {
     }
     return ''
   }
+  
   resetForm() {
     this.form.reset();
     Object.keys(this.form.controls).forEach((key) => {
