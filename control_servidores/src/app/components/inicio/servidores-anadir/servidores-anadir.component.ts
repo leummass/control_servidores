@@ -81,8 +81,6 @@ export class ServidoresAnadirComponent {
     this.fecha = new Date().toString();
   }
 
-  ngOnInit() {}
-
   enviar() {
     let formValue = this.form.value;
     this.servidor= new Catalogo_Servidor(
@@ -92,7 +90,8 @@ export class ServidoresAnadirComponent {
       formValue.Tipo,
       this.fecha,
       this.numemp
-    )
+    );
+    this.setFecha();//Actualizar fecha de las ip registradas ya que estaban en ''
 
   }
   MensajeError(nombre_campo: string) {
@@ -112,11 +111,10 @@ export class ServidoresAnadirComponent {
     });
   }
   setFecha() {
-    let fecha = new Date().toString();
-    this.detalle_des.FechaModificacion = fecha;
-    this.detalle_drp.FechaModificacion = fecha;
-    this.detalle_test.FechaModificacion = fecha;
-    this.detalle_prod.FechaModificacion = fecha;
+    this.detalle_des.FechaModificacion = this.fecha;
+    this.detalle_drp.FechaModificacion = this.fecha;
+    this.detalle_test.FechaModificacion = this.fecha;
+    this.detalle_prod.FechaModificacion = this.fecha;
   }
 
   abrirVentana(tipo_ip: string) {
