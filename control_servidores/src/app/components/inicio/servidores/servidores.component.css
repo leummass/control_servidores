@@ -12,7 +12,14 @@
     padding-top: 1%;
 }
 .filtro{
-    margin-left:5%;
+    margin-left:4%;
     margin-top:0%;
     padding-top:1%;
+    width:30%;
+    
+}
+mat-expansion-panel{
+    width:90%;
+    margin:auto;
+    margin-bottom:0.5%;
 }

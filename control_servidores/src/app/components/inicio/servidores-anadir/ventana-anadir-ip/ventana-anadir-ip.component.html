@@ -86,19 +86,22 @@
           </mat-error>
         </mat-form-field>
       </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <div mat-dialog-actions>
+            <button
+              type="submit"
+              class="button_login"
+              mat-raised-button
+              cdkFocusInitial
+              [disabled]="form.invalid"
+              color="primary"
+            >
+              Guardar
+            </button>
+          </div>
+        </mat-grid-tile>
     </mat-grid-list>
-    <div mat-dialog-actions>
-        <button
-          type="submit"
-          class="button_login"
-          mat-raised-button
-          cdkFocusInitial
-          [disabled]="form.invalid"
-          color="primary"
-        >
-          Guardar
-        </button>
-      </div>
+    
   </form>
 </div>
 

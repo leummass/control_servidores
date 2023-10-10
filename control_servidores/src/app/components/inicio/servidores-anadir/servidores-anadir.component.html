@@ -5,7 +5,7 @@
   <div class="form_anadir">
     <form [formGroup]="form" (ngSubmit)="enviar()">
       <mat-grid-list cols="4" rowHeight="90px">
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-grid-tile [colspan]="4" [rowspan]="1">
           <mat-form-field class="input_form" appearance="outline">
             <mat-label>Nombre</mat-label>
             <input
@@ -18,9 +18,7 @@
               {{ MensajeError("nombre_servidor") }}
             </mat-error>
           </mat-form-field>
-        </mat-grid-tile>
-
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
+        
           <mat-form-field class="input_form" appearance="outline">
             <mat-label>IP Productiva</mat-label>
             <input matInput formControlName="ip_prod" type="text" required readonly />
@@ -31,22 +29,17 @@
           </mat-form-field>
         </mat-grid-tile>
 
-        <mat-grid-tile [colspan]="2" [rowspan]="2">
+        <mat-grid-tile [colspan]="4" [rowspan]="1">
           <mat-form-field class="input_form" appearance="outline">
-            <mat-label>Descripcion</mat-label>
-            <textarea
-              matInput
-              formControlName="descripcion"
-              type="text"
-              required
-            ></textarea>
-            <mat-error *ngIf="form.get('descripcion')?.errors">
-              {{ MensajeError("descripcion") }}
-            </mat-error>
-          </mat-form-field>
-        </mat-grid-tile>
+            <mat-label>IP DRP</mat-label>
+            <input matInput formControlName="ip_drp" type="text" required readonly/>
 
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-error *ngIf="form.get('ip_drp')?.errors">
+              {{ MensajeError("ip_drp") }}
+            </mat-error>
+            <button type="button" mat-icon-button matSuffix (click)="abrirVentana('IP DRP')"><mat-icon>add</mat-icon></button>
+          </mat-form-field>
+        
           <mat-form-field class="input_form" appearance="outline">
             <mat-label>IP Desarrollo</mat-label>
             <input matInput formControlName="ip_des" type="text" required readonly/>
@@ -57,7 +50,7 @@
           </mat-form-field>
         </mat-grid-tile>
 
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-grid-tile [colspan]="4" [rowspan]="1">
           <mat-form-field class="input_form" appearance="outline">
             <mat-label>IP Tester</mat-label>
             <input matInput formControlName="ip_test" type="text" required readonly/>
@@ -66,9 +59,7 @@
             </mat-error>
             <button type="button" mat-icon-button matSuffix (click)="abrirVentana('IP Tester')"><mat-icon>add</mat-icon></button>
           </mat-form-field>
-        </mat-grid-tile>
-
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
+        
           <mat-form-field class="input_form" appearance="outline">
             <mat-label>Tipo</mat-label>
             <mat-select formControlName="tipo" required>
@@ -85,15 +76,18 @@
           </mat-form-field>
         </mat-grid-tile>
 
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-grid-tile [colspan]="4" [rowspan]="2">
           <mat-form-field class="input_form" appearance="outline">
-            <mat-label>IP DRP</mat-label>
-            <input matInput formControlName="ip_drp" type="text" required readonly/>
-
-            <mat-error *ngIf="form.get('ip_drp')?.errors">
-              {{ MensajeError("ip_drp") }}
+            <mat-label>Descripcion</mat-label>
+            <textarea
+              matInput
+              formControlName="descripcion"
+              type="text"
+              required
+            ></textarea>
+            <mat-error *ngIf="form.get('descripcion')?.errors">
+              {{ MensajeError("descripcion") }}
             </mat-error>
-            <button type="button" mat-icon-button matSuffix (click)="abrirVentana('IP DRP')"><mat-icon>add</mat-icon></button>
           </mat-form-field>
         </mat-grid-tile>
 

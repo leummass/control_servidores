@@ -52,7 +52,14 @@ export class ServidoresComponent {
   displayedColumns: string[] = ['IpProduccion', 'Nombre', 'Tipo', 'Estatus'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   form: FormGroup;
+  tipo_serv: any[] = [
+    { value: 'tipo1', viewValue: 'tipo1' },
+    { value: 'tipo2', viewValue: 'tipo2' },
+    { value: 'tipo3', viewValue: 'tipo3' },
+  ];
 
+  nombre:string;
+  peso:string;
   constructor(){
   
 
