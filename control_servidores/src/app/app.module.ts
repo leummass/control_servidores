@@ -10,11 +10,12 @@ import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login.service';
 import { DatosService } from './services/datos.service';
 import { SharedModule } from './shared-modules/shared/shared.module';
+import { VentanaAnadirIpComponent } from './components/servidores-anadir/ventana-anadir-ip/ventana-anadir-ip.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent, VentanaAnadirIpComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

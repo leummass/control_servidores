@@ -8,7 +8,8 @@ export class LoginService{
     constructor(private router: Router){
         
     }
-    login(numemp:number){
+    login(numemp:string){
+        this.usuario = new Usuario(numemp,"adm");
         return true;
     }
 }

@@ -10,7 +10,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent {
   form: FormGroup;
-  numemp: number;
+  numemp: string;
   cargando: boolean = false;
   constructor(private formBuilder: FormBuilder, private loginService:LoginService, private router:Router){
     this.form = new FormGroup({
@@ -19,13 +19,10 @@ export class LoginComponent {
   }
   login(){
     this.numemp=this.form.value.empleado;
-    console.log(this.form.get('empleado'));
     if(this.loginService.login(this.numemp)){
-      console.log("Logged in");
       this.falsoCargando();
       
     }else{
-      console.log("No se pudo iniciar sesión");
       this.form.reset();
     }
     

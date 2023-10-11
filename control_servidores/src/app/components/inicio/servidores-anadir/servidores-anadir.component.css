@@ -3,7 +3,7 @@
 }
 .input_form{
     padding:1%;
-    margin-left:2.5%;
+    margin-left:0;
     margin-bottom: 0.5%;
 }
 button{
@@ -15,4 +15,6 @@ button{
     width:100%;
     padding:10%;
 }
-
+mat-form-field{
+    width:40%;
+}
