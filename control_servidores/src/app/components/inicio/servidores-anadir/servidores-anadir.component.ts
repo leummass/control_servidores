@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Catalogo_DetalleServidor } from 'src/app/models/catalogo_detalleservidor.model';
 import { Catalogo_Servidor } from 'src/app/models/catalogo_servidor.model';
 import { LoginService } from 'src/app/services/login.service';
@@ -35,6 +35,8 @@ export class ServidoresAnadirComponent {
     private formBuilder: FormBuilder,
     public ventana: MatDialog,
     public loginService: LoginService,
+    public dialogRef: MatDialogRef<ServidoresAnadirComponent>,
+      @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.form = this.formBuilder.group({
       nombre_servidor: ['', Validators.required],
@@ -126,6 +128,7 @@ export class ServidoresAnadirComponent {
     });
     if (tipo_ip == 'IP Productiva') {
       dialogRef.afterClosed().subscribe((result) => {
+        if(result != undefined){
         this.detalle_prod = new Catalogo_DetalleServidor(
           0,
           0,
@@ -142,10 +145,12 @@ export class ServidoresAnadirComponent {
           this.numemp
         );
         this.form.patchValue({ ip_prod: result.resForm.ip });
+        }
       });
     }
     if (tipo_ip == 'IP Tester') {
       dialogRef.afterClosed().subscribe((result) => {
+        if(result != undefined){
         this.detalle_test = new Catalogo_DetalleServidor(
           0,
           0,
@@ -162,10 +167,12 @@ export class ServidoresAnadirComponent {
           this.numemp
         );
         this.form.patchValue({ ip_test: result.resForm.ip });
+        }
       });
     }
     if (tipo_ip == 'IP DRP') {
       dialogRef.afterClosed().subscribe((result) => {
+        if(result != undefined){
         this.detalle_drp = new Catalogo_DetalleServidor(
           0,
           0,
@@ -182,10 +189,12 @@ export class ServidoresAnadirComponent {
           this.numemp
         );
         this.form.patchValue({ ip_drp: result.resForm.ip });
+        }
       });
     }
     if (tipo_ip == 'IP Desarrollo') {
       dialogRef.afterClosed().subscribe((result) => {
+        if(result != undefined){
         this.detalle_des = new Catalogo_DetalleServidor(
           0,
           0,
@@ -202,6 +211,7 @@ export class ServidoresAnadirComponent {
           this.numemp
         );
         this.form.patchValue({ ip_des: result.resForm.ip });
+        }
       });
     }
   }

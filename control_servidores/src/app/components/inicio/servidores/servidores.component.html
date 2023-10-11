@@ -30,12 +30,11 @@
   </mat-expansion-panel>
   <div class="botones">
     <span class="spacer"></span>
-    <button class="agregar_servidor" mat-mini-fab color="primary">
+    <button class="agregar_servidor" mat-mini-fab color="primary" (click)="abrirVentanaAgregar()">
       <mat-icon
         aria-hidden="false"
         aria-label="Example home icon"
         fontIcon="add"
-        (click)="abrirVentanaAgregar()"
       ></mat-icon>
     </button>
   </div>
