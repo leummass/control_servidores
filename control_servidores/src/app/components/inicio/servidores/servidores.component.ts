@@ -1,10 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Inject, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { PaginatorESP } from '../paginatoresp.component';
 import { FormGroup } from '@angular/forms';
 import { ServidoresAnadirComponent } from '../servidores-anadir/servidores-anadir.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface PeriodicElement {
   name: string;
@@ -63,7 +63,9 @@ export class ServidoresComponent {
 
   nombre:string;
   peso:string;
-  constructor(public ventana: MatDialog){
+  constructor(public ventana: MatDialog,
+    public dialogRef: MatDialogRef<ServidoresAnadirComponent>,
+      @Inject(MAT_DIALOG_DATA) public data: any){
   
 
   }
@@ -87,6 +89,7 @@ export class ServidoresComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   abrirVentanaAgregar() {
+    console.log("abrir");
     const dialogRef = this.ventana.open(ServidoresAnadirComponent, {
       width: '70%',
       enterAnimationDuration: '300ms',
