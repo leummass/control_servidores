@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Catalogo_DetalleServidor } from 'src/app/models/catalogo_detalleservidor.model';
 import { Catalogo_Servidor } from 'src/app/models/catalogo_servidor.model';
 import { LoginService } from 'src/app/services/login.service';
@@ -34,7 +34,9 @@ export class ServidoresAnadirComponent {
   constructor(
     private formBuilder: FormBuilder,
     public ventana: MatDialog,
-    public loginService: LoginService
+    public loginService: LoginService,
+    public dialogRef: MatDialogRef<ServidoresAnadirComponent>,
+      @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.form = this.formBuilder.group({
       nombre_servidor: ['', Validators.required],

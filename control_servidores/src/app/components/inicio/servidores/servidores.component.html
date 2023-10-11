@@ -4,33 +4,41 @@
   </mat-toolbar>
   <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
-    <mat-panel-title>
-      Filtros
-    </mat-panel-title>
-  </mat-expansion-panel-header>
-  <mat-panel-description>
-    <mat-form-field class="filtro">
-      <mat-label>Nombre</mat-label>
-      <input matInput (keyup)="filtrarNombre($event)" />
-    </mat-form-field>
-    <mat-form-field class="filtro">
-      <mat-label>IP</mat-label>
-      <input matInput (keyup)="filtrarIP($event)" />
-    </mat-form-field>
-    <mat-form-field class="filtro">
-      <mat-label>Tipo</mat-label>
-      <mat-select formControlName="tipo" required>
-        <mat-option
-          *ngFor="let servidor of tipo_serv"
-          [value]="servidor.value"
-        >
-          {{ servidor.viewValue }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </mat-panel-description>
+      <mat-panel-title> Filtros </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-panel-description>
+      <mat-form-field class="filtro">
+        <mat-label>Nombre</mat-label>
+        <input matInput (keyup)="filtrarNombre($event)" />
+      </mat-form-field>
+      <mat-form-field class="filtro">
+        <mat-label>IP</mat-label>
+        <input matInput (keyup)="filtrarIP($event)" />
+      </mat-form-field>
+      <mat-form-field class="filtro">
+        <mat-label>Tipo</mat-label>
+        <mat-select >
+          <mat-option
+            *ngFor="let servidor of tipo_serv"
+            [value]="servidor.value"
+          >
+            {{ servidor.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-panel-description>
   </mat-expansion-panel>
-
+  <div class="botones">
+    <span class="spacer"></span>
+    <button class="agregar_servidor" mat-mini-fab color="primary">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="add"
+        (click)="abrirVentanaAgregar()"
+      ></mat-icon>
+    </button>
+  </div>
   <div class="contenedor_tabla mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" class="tabla">
       <ng-container matColumnDef="IpProduccion">

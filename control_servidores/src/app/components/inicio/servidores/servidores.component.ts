@@ -2,7 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { PaginatorESP } from '../paginatoresp.component';
-import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { ServidoresAnadirComponent } from '../servidores-anadir/servidores-anadir.component';
+import { MatDialog } from '@angular/material/dialog';
 
 export interface PeriodicElement {
   name: string;
@@ -52,6 +54,7 @@ export class ServidoresComponent {
   displayedColumns: string[] = ['IpProduccion', 'Nombre', 'Tipo', 'Estatus'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   form: FormGroup;
+  
   tipo_serv: any[] = [
     { value: 'tipo1', viewValue: 'tipo1' },
     { value: 'tipo2', viewValue: 'tipo2' },
@@ -60,7 +63,7 @@ export class ServidoresComponent {
 
   nombre:string;
   peso:string;
-  constructor(){
+  constructor(public ventana: MatDialog){
   
 
   }
@@ -83,6 +86,12 @@ export class ServidoresComponent {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
-
+  abrirVentanaAgregar() {
+    const dialogRef = this.ventana.open(ServidoresAnadirComponent, {
+      width: '70%',
+      enterAnimationDuration: '300ms',
+      exitAnimationDuration: '300ms',
+      data: { },
+    });
+  }
 }
