@@ -1,0 +1,1 @@
+export const getServidores = (req,res) => res.send('servidores')
