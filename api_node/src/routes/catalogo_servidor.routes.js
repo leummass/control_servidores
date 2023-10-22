@@ -1,17 +1,19 @@
 import {Router} from 'express'
 
-import { getServidores } from '../controllers/catalogo_servidor.controller'
+import { getServidores, addServidor, getServidorById, deleteServidorById, updateServidorById} from '../controllers/catalogo_servidor.controller'
 
 const router = Router()
 
 router.get('/catalogo_servidor', getServidores)
 
-router.post('/catalogo_servidor', )
+router.post('/catalogo_servidor', addServidor)
 
-router.delete('/catalogo_servidor', )
+router.get('/catalogo_servidor/:id', getServidorById)
 
-router.put('/catalogo_servidor', )
+router.delete('/catalogo_servidor/:id', deleteServidorById)
 
-router.get('/catalogo_servidor', )
+router.put('/catalogo_servidor/:id', updateServidorById)
+
+
 
 export default router

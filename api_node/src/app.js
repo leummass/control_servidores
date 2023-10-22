@@ -9,6 +9,12 @@ let port;
 //Configuración de app.js
 app.set('port', config.port)
 
+//middleware
+app.use(express.json());
+app.use(express.urlencoded({extended:false})); //Permite enviar datos por medio de html
+
+
+//Rutas
 app.use(catalogo_servidor)
 
 export default app

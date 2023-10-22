@@ -1,0 +1,29 @@
+GET http://localhost:3002/catalogo_servidor
+
+###
+
+POST http://localhost:3002/catalogo_servidor
+Content-Type: application/json
+
+{
+    "id":"700",
+    "nombre":"putaso.com"
+}
+
+###
+
+GET http://localhost:3002/catalogo_servidor/300
+
+
+###
+
+DELETE http://localhost:3002/catalogo_servidor/300
+
+###
+
+PUT http://localhost:3002/catalogo_servidor/700
+Content-Type: application/json
+
+{
+    "nombre":"cuca"
+}

@@ -20,4 +20,4 @@ export async function getConnection() {
   }
 }
 
-getConnection();
+export {sql};
