@@ -1,4 +1,13 @@
-GET http://localhost:3002/catalogo_servidor
+POST http://localhost:3001/catalogo_servidor
+Content-Type: application/json
+
+{
+    "nombre":"",
+    "ipdireccion":"",
+    "tipo":""
+
+}
+
 
 ###
 
@@ -7,7 +16,7 @@ Content-Type: application/json
 
 {
     "id":"700",
-    "nombre":"putaso.com"
+    "nombre":"asdf1"
 }
 
 ###

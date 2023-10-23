@@ -87,9 +87,12 @@ export class ServidoresAnadirComponent {
     let formValue = this.form.value;
     this.servidor= new Catalogo_Servidor(
       0,
+      0,
+      '',
       formValue.nombre_servidor,
-      formValue.descripcion,
       formValue.Tipo,
+      '',
+      formValue.descripcion,
       this.fecha,
       this.numemp
     );

@@ -1,11 +1,16 @@
 import { getConnection, sql } from "../db/connection";
 
 export const getServidores = async (req, res) => {
+  const { nombre, ipdireccion, tipo} = req.body;
   try {
     const pool = await getConnection();
     const result = await pool
       .request()
-      .query("select * from Catalogo_servidor");
+      .input("Nombre", nombre)
+      .input("IpDireccion", ipdireccion)
+      .input("Tipo",tipo)
+      .query("EXEC sp_ObtenerListaServidores @Nombre, @IpDireccion, @Tipo");
+      console.log(result.recordset)
     res.json(result.recordset);
   } catch (err) {
     res.status(500);
