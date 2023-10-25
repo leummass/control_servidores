@@ -11,6 +11,7 @@ import { LoginService } from './services/login.service';
 import { DatosService } from './services/datos.service';
 import { SharedModule } from './shared-modules/shared/shared.module';
 import { VentanaAnadirIpComponent } from './components/servidores-anadir/ventana-anadir-ip/ventana-anadir-ip.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -20,7 +21,8 @@ import { VentanaAnadirIpComponent } from './components/servidores-anadir/ventana
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   providers: [LoginService, DatosService],
   bootstrap: [AppComponent],

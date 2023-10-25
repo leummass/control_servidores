@@ -19,28 +19,33 @@ export class ServidoresComponent {
   displayedColumns: string[] = ['IpProduccion', 'Nombre', 'Tipo', 'Estatus'];
   dataSource = new MatTableDataSource<Catalogo_Servidor>();
   form: FormGroup;
-  
+  nombre:string;
+  peso:string;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   tipo_serv: any[] = [
     { value: 'tipo1', viewValue: 'tipo1' },
     { value: 'tipo2', viewValue: 'tipo2' },
     { value: 'tipo3', viewValue: 'tipo3' },
   ];
 
-  nombre:string;
-  peso:string;
-  constructor(public ventana: MatDialog, public datosService: DatosService){}
+
+  constructor(public ventana: MatDialog, private datosService: DatosService){}
 
   ngOnInit(){
-    //this.obtenerServidores();
+    this.obtenerServidores();
   }
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
   obtenerServidores(){
+    const params = {nombre:'', ipdireccion:'', tipo:''}
     
+    this.datosService.getServidores(params).subscribe( data => {
+      this.dataSource.data=data;
+    })
   }
 
   filtrarNombre(event: Event) {
@@ -56,7 +61,15 @@ export class ServidoresComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   abrirVentanaAgregar() {
-    console.log("abrir");
+    const dialogRef = this.ventana.open(ServidoresAnadirComponent, {
+      width: '70%',
+      enterAnimationDuration: '300ms',
+      exitAnimationDuration: '300ms',
+      data: {name: 'XD'},
+    });
+  }
+
+  abrirVentanaEditar() {
     const dialogRef = this.ventana.open(ServidoresAnadirComponent, {
       width: '70%',
       enterAnimationDuration: '300ms',

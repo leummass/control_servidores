@@ -1,5 +1,5 @@
 POST http://localhost:3001/catalogo_servidor
-Content-Type: application/json
+    Content-Type: application/json
 
 {
     "nombre":"",
@@ -36,3 +36,10 @@ Content-Type: application/json
 {
     "nombre":"cuca"
 }
+
+
+
+########################################
+#CATALOGO SERVICIO#
+########################################
+GET http://localhost:3001/catalogo_servicio

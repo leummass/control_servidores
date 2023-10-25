@@ -1,6 +1,7 @@
 import express from 'express'
 import config from './config'
 import catalogo_servidor from './routes/catalogo_servidor.routes'
+import catalogo_servicio from './routes/catalogo_servicio.routes.js'
 import cors from 'cors'
 
 const app = express();
@@ -17,5 +18,6 @@ app.use(express.urlencoded({extended:false})); //Permite enviar datos por medio 
 
 //Rutas
 app.use(catalogo_servidor)
+app.use(catalogo_servicio)
 
 export default app
