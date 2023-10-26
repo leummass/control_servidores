@@ -6,11 +6,15 @@ mat-sidenav button{
     font-size:1vw;
 }
 
+mat-toolbar{
+    height:10vh;
+}
+
 mat-sidenav-container{
-    height: calc(100vh - 64px);
+    height: calc(100vh - 10vh);
 }
 mat-sidenav-content{
-    padding: 15px;
+    height: calc(100vh - 10vh);
     display:flex;
     flex-direction: column;
     align-items: flex-start;

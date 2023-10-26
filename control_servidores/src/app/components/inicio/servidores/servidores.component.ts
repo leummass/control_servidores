@@ -65,7 +65,7 @@ export class ServidoresComponent {
       width: '70%',
       enterAnimationDuration: '300ms',
       exitAnimationDuration: '300ms',
-      data: {name: 'XD'},
+      data: {titulo: 'Agregar servidor'},
     });
   }
 

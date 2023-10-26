@@ -1,6 +1,6 @@
 .container{
     width:100%;
-    margin-bottom: 5%;
+    
 }
 .contenedor_tabla{
     width: 90%;
@@ -17,6 +17,9 @@
     padding-top:1%;
     width:30%;
     
+}
+mat-toolbar{
+    width:100%;
 }
 mat-expansion-panel{
     width:90%;
