@@ -27,6 +27,7 @@ mat-expansion-panel{
     margin-bottom:0.5%;
 }
 .botones{
+    margin-top:1%;
     width:95%;
     display:flex;
 }

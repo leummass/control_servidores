@@ -1,9 +1,11 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Catalogo_Servicio } from 'src/app/models/catalogo_servicio.model';
 import { DatosService } from 'src/app/services/datos.service';
 import { PaginatorESP } from '../paginatoresp.component';
+import { ServiciosAnadirComponent } from '../servicios-anadir/servicios-anadir.component';
 
 @Component({
   selector: 'app-servicios',
@@ -18,7 +20,7 @@ export class ServiciosComponent implements AfterViewInit{
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private datosService:DatosService){}
+  constructor(public ventana: MatDialog,private datosService:DatosService){}
 
   ngOnInit(){
     this.obtenerServicios();
@@ -35,5 +37,13 @@ export class ServiciosComponent implements AfterViewInit{
   filtrar(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  abrirVentanaAgregar(){
+    const dialogRef = this.ventana.open(ServiciosAnadirComponent, {
+      width: '70%',
+      enterAnimationDuration: '300ms',
+      exitAnimationDuration: '300ms',
+      data: {name: 'XD'},
+    });
   }
 }
