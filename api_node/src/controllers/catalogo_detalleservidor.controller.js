@@ -1,7 +1,7 @@
 import { getConnection, sql } from "../db/connection";
 
 export const getDetalleServidorById = async (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
   try {
     const pool = await getConnection();
     const result = await pool

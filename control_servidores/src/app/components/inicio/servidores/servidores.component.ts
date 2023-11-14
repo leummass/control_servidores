@@ -7,6 +7,7 @@ import { ServidoresAnadirComponent } from '../servidores-anadir/servidores-anadi
 import { MatDialog } from '@angular/material/dialog';
 import { DatosService } from 'src/app/services/datos.service';
 import { Catalogo_Servidor } from 'src/app/models/catalogo_servidor.model';
+import { Catalogo_DetalleServidor } from 'src/app/models/catalogo_detalleservidor.model';
 
 @Component({
   selector: 'app-servidores',
@@ -20,6 +21,7 @@ export class ServidoresComponent {
   form: FormGroup;
   nombre: string;
   peso: string;
+  detalle_servidors:Catalogo_DetalleServidor[];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -69,6 +71,12 @@ export class ServidoresComponent {
     });
   }
 
+  obtenerDetalleServidor(IdServidor:number){
+    this.datosService.getDetalleServidor(IdServidor).subscribe(((data)=> {
+      this.detalle_servidors=data;
+    }));
+  }
+
   abrirVentanaAgregar() {
     const dialogRef = this.ventana.open(ServidoresAnadirComponent, {
       width: '70%',
@@ -80,15 +88,21 @@ export class ServidoresComponent {
 
   abrirVentanaEditar(servidor: Catalogo_Servidor) {
     let datas;
-    if(servidor.Tipo == 'Tester'){
-      datas = { titulo: 'Editar servidor', nombre: servidor.Nombre, tipo: servidor.Tipo, descripcion: servidor.Descripcion }
+    this.obtenerDetalleServidor(servidor.IdServidor);
+    if(this.detalle_servidors.length != 0){
+      
     }
-    
+
     const dialogRef = this.ventana.open(ServidoresAnadirComponent, {
       width: '70%',
       enterAnimationDuration: '300ms',
       exitAnimationDuration: '300ms',
       data: datas,
+    });
+  }
+  retornaDetalleServidorFilter(tipo:string){
+    this.detalle_servidors.filter(obj => {
+      return obj.Tipo === tipo;
     });
   }
 }

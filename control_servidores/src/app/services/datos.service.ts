@@ -14,7 +14,7 @@ export class DatosService{
     }
     private apiCatalogo_Servidor = 'http://localhost:3001/catalogo_servidor';
     private apiCatalogo_Servicio = 'http://localhost:3001/catalogo_servicio'
-
+    private apiCatalogo_DetalleServidor = 'http://localhost:3001/catalogo_detalleservidor';
 
     getServidores(params:any):Observable<Catalogo_Servidor[]>{
         const headers = new HttpHeaders({
@@ -28,7 +28,7 @@ export class DatosService{
     }
     
     getDetalleServidor(IdServidor:number):Observable<Catalogo_DetalleServidor[]>{
-        
+        return this.httpClient.get<Catalogo_DetalleServidor[]>(this.apiCatalogo_DetalleServidor+"/"+IdServidor)
     }
 
 }
