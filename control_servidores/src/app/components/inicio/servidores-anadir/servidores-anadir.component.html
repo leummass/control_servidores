@@ -13,7 +13,9 @@
               formControlName="nombre_servidor"
               type="text"
               required
+              [(ngModel)]="data.nombre"
             />
+            
             <mat-error *ngIf="form.get('nombre_servidor')?.errors">
               {{ MensajeError("nombre_servidor") }}
             </mat-error>
@@ -70,8 +72,8 @@
                 {{ servidor.viewValue }}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="form.get('descripcion')?.errors">
-              {{ MensajeError("descripcion") }}
+            <mat-error *ngIf="form.get('tipo')?.errors">
+              {{ MensajeError("tipo") }}
             </mat-error>
           </mat-form-field>
         </mat-grid-tile>
@@ -81,9 +83,11 @@
             <mat-label>Descripcion</mat-label>
             <textarea
               matInput
+              rows="4"
               formControlName="descripcion"
               type="text"
               required
+              [(ngModel)]="data.descripcion"
             ></textarea>
             <mat-error *ngIf="form.get('descripcion')?.errors">
               {{ MensajeError("descripcion") }}

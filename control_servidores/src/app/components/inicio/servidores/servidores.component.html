@@ -7,28 +7,30 @@
       <mat-panel-title> Filtros </mat-panel-title>
     </mat-expansion-panel-header>
     <mat-panel-description>
-      <mat-form-field class="filtro">
-        <mat-label>Nombre</mat-label>
-        <input matInput (keyup)="filtrarNombre($event)" />
-      </mat-form-field>
-      <mat-form-field class="filtro">
-        <mat-label>IP</mat-label>
-        <input matInput (keyup)="filtrarIP($event)" />
-      </mat-form-field>
-      <mat-form-field class="filtro">
-        <mat-label>Tipo</mat-label>
-        <mat-select >
-          <mat-option
-            *ngFor="let servidor of tipo_serv"
-            [value]="servidor.value"
-          >
-            {{ servidor.viewValue }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <form [formGroup]="form">
+        <mat-form-field class="filtro">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="fNombre" />
+        </mat-form-field>
+        <mat-form-field class="filtro">
+          <mat-label>IP</mat-label>
+          <input matInput formControlName="fIP"  />
+        </mat-form-field>
+        <mat-form-field class="filtro">
+          <mat-label>Tipo</mat-label>
+          <mat-select formControlName="fTipo">
+            <mat-option
+              *ngFor="let servidor of tipo_serv"
+              [value]="servidor.value"
+            >
+              {{ servidor.viewValue }}
+            </mat-option>
+          </mat-select >
+        </mat-form-field>
+      </form>
     </mat-panel-description>
   </mat-expansion-panel>
-  
+
   <div class="contenedor_tabla mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" class="tabla">
       <ng-container matColumnDef="IpProduccion">
@@ -52,7 +54,11 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="abrirVentanaEditar()"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns; let element"
+        (click)="abrirVentanaEditar(element)"
+      ></tr>
     </table>
     <mat-paginator
       [pageSizeOptions]="[5, 10, 20]"
@@ -64,7 +70,12 @@
 
   <div class="botones">
     <span class="spacer"></span>
-    <button class="agregar_servidor" mat-mini-fab color="primary" (click)="abrirVentanaAgregar()">
+    <button
+      class="agregar_servidor"
+      mat-mini-fab
+      color="primary"
+      (click)="abrirVentanaAgregar()"
+    >
       <mat-icon
         aria-hidden="false"
         aria-label="Example home icon"
