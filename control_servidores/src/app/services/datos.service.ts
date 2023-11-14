@@ -4,6 +4,7 @@ import { LoginService } from "./login.service";
 import { Catalogo_Servidor } from "../models/catalogo_servidor.model";
 import { Observable } from "rxjs";
 import { Catalogo_Servicio } from "../models/catalogo_servicio.model";
+import { Catalogo_DetalleServidor } from "../models/catalogo_detalleservidor.model";
 
 
 @Injectable()
@@ -26,5 +27,8 @@ export class DatosService{
         return this.httpClient.get<Catalogo_Servicio[]>(this.apiCatalogo_Servicio)
     }
     
+    getDetalleServidor(IdServidor:number):Observable<Catalogo_DetalleServidor[]>{
+        
+    }
 
 }
