@@ -40,7 +40,6 @@ export class ServidoresComponent {
         if(filters[2].fTipo != ''){
           c = !filters[2].fTipo || data.Tipo === filters[2].fTipo;
         }
-        
         return a && b && c;
       } ) as (Catalogo_Servidor:Catalogo_Servidor, string:string) => boolean
 
@@ -80,11 +79,16 @@ export class ServidoresComponent {
   }
 
   abrirVentanaEditar(servidor: Catalogo_Servidor) {
+    let datas;
+    if(servidor.Tipo == 'Tester'){
+      datas = { titulo: 'Editar servidor', nombre: servidor.Nombre, tipo: servidor.Tipo, descripcion: servidor.Descripcion }
+    }
+    
     const dialogRef = this.ventana.open(ServidoresAnadirComponent, {
       width: '70%',
       enterAnimationDuration: '300ms',
       exitAnimationDuration: '300ms',
-      data: { titulo: 'Editar servidor', nombre: servidor.Nombre, tipo: servidor.Tipo, descripcion: servidor.Descripcion },
+      data: datas,
     });
   }
 }
