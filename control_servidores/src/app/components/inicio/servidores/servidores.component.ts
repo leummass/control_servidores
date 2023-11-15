@@ -88,9 +88,15 @@ export class ServidoresComponent {
 
   abrirVentanaEditar(servidor: Catalogo_Servidor) {
     let datas;
+    let servidor_tester:Catalogo_DetalleServidor;
+    let servidor_produccion:Catalogo_DetalleServidor;
+    let servidor_desarrollo:Catalogo_DetalleServidor;
+    let ip_tester='',ip_produccion='',ip_desarrollo='';
     this.obtenerDetalleServidor(servidor.IdServidor);
     if(this.detalle_servidors.length != 0){
-      
+      servidor_tester=this.retornaDetalleServidorFilter('tester');
+      servidor_produccion=this.retornaDetalleServidorFilter('produccion')
+      servidor_desarrollo=this.retornaDetalleServidorFilter('desarrollo')
     }
 
     const dialogRef = this.ventana.open(ServidoresAnadirComponent, {
@@ -101,8 +107,9 @@ export class ServidoresComponent {
     });
   }
   retornaDetalleServidorFilter(tipo:string){
-    this.detalle_servidors.filter(obj => {
-      return obj.Tipo === tipo;
+    let servidor_coinc = this.detalle_servidors.filter(obj => {
+      return obj.Tipo.toLowerCase() === tipo.toLowerCase();
     });
+    return servidor_coinc[0];
   }
 }
