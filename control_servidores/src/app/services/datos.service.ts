@@ -27,8 +27,8 @@ export class DatosService{
         return this.httpClient.get<Catalogo_Servicio[]>(this.apiCatalogo_Servicio)
     }
     
-    getDetalleServidor(IdServidor:number):Observable<Catalogo_DetalleServidor[]>{
-        return this.httpClient.get<Catalogo_DetalleServidor[]>(this.apiCatalogo_DetalleServidor+"/"+IdServidor)
+    getDetalleServidor():Observable<Catalogo_DetalleServidor[]>{
+        return this.httpClient.get<Catalogo_DetalleServidor[]>(this.apiCatalogo_DetalleServidor)
     }
 
 }

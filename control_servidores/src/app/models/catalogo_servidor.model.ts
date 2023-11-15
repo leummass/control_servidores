@@ -1,4 +1,4 @@
-export class Catalogo_Servidor {
+export class  Catalogo_Servidor {
     constructor(
         public ID: number,
         public IdServidor: number,
@@ -10,4 +10,7 @@ export class Catalogo_Servidor {
         public FechaModificacion: string,
         public NoColaborador: string,
     ) { }
+    retornaID(){
+        return this.ID;
+    }
 }

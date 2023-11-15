@@ -49,4 +49,4 @@ GET http://localhost:3001/catalogo_servicio
 ########################################
 #CATALOGO DETALLE SERVIDOR#
 ########################################
-GET http://localhost:3001/catalogo_detalleservidor/6
+GET http://localhost:3001/catalogo_detalleservidor

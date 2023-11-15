@@ -23,7 +23,7 @@
         
           <mat-form-field class="input_form" appearance="outline">
             <mat-label>IP Productiva</mat-label>
-            <input matInput formControlName="ip_prod" type="text" required readonly />
+            <input matInput formControlName="ip_prod" type="text" required readonly [(ngModel)]="data.ip_prod"/>
             <mat-error *ngIf="form.get('ip_prod')?.errors">
               {{ MensajeError("ip_prod") }}
             </mat-error>
@@ -34,7 +34,7 @@
         <mat-grid-tile [colspan]="4" [rowspan]="1">
           <mat-form-field class="input_form" appearance="outline">
             <mat-label>IP DRP</mat-label>
-            <input matInput formControlName="ip_drp" type="text" required readonly/>
+            <input matInput formControlName="ip_drp" type="text" required readonly />
 
             <mat-error *ngIf="form.get('ip_drp')?.errors">
               {{ MensajeError("ip_drp") }}
@@ -44,7 +44,7 @@
         
           <mat-form-field class="input_form" appearance="outline">
             <mat-label>IP Desarrollo</mat-label>
-            <input matInput formControlName="ip_des" type="text" required readonly/>
+            <input matInput formControlName="ip_des" type="text" required readonly [(ngModel)]="data.ip_des"/>
             <mat-error *ngIf="form.get('ip_des')?.errors">
               {{ MensajeError("ip_des") }}
             </mat-error>
@@ -55,7 +55,7 @@
         <mat-grid-tile [colspan]="4" [rowspan]="1">
           <mat-form-field class="input_form" appearance="outline">
             <mat-label>IP Tester</mat-label>
-            <input matInput formControlName="ip_test" type="text" required readonly/>
+            <input matInput formControlName="ip_test" type="text" required readonly [(ngModel)]="data.ip_test"/>
             <mat-error *ngIf="form.get('ip_test')?.errors">
               {{ MensajeError("ip_test") }}
             </mat-error>
@@ -64,10 +64,11 @@
         
           <mat-form-field class="input_form" appearance="outline">
             <mat-label>Tipo</mat-label>
-            <mat-select formControlName="tipo" required>
+            <mat-select formControlName="tipo" required [(ngModel)]="data.tipo">
               <mat-option
                 *ngFor="let servidor of tipo_serv"
                 [value]="servidor.value"
+
               >
                 {{ servidor.viewValue }}
               </mat-option>
@@ -106,7 +107,7 @@
             Agregar
           </button>
 
-          <button mat-stroked-button color="warn" (click)="resetForm()">
+          <button type="button" mat-stroked-button color="warn" (click)="resetForm(data.edicion)">
             Limpiar
           </button>
         </mat-grid-tile>

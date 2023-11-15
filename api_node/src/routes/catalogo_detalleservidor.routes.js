@@ -1,9 +1,9 @@
 import {Router} from 'express'
 
-import { getDetalleServidorById } from '../controllers/catalogo_detalleservidor.controller'
+import { getDetalleServidor } from '../controllers/catalogo_detalleservidor.controller'
 
 const router = Router()
 
-router.get('/catalogo_detalleservidor/:id', getDetalleServidorById)
+router.get('/catalogo_detalleservidor', getDetalleServidor)
 
 export default router
