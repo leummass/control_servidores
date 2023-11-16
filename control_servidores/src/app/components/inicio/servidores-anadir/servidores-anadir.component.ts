@@ -7,6 +7,7 @@ import {
 } from '@angular/material/dialog';
 import { Catalogo_DetalleServidor } from 'src/app/models/catalogo_detalleservidor.model';
 import { Catalogo_Servidor } from 'src/app/models/catalogo_servidor.model';
+import { DatosService } from 'src/app/services/datos.service';
 import { LoginService } from 'src/app/services/login.service';
 import { VentanaAnadirIpComponent } from './ventana-anadir-ip/ventana-anadir-ip.component';
 
@@ -37,6 +38,7 @@ export class ServidoresAnadirComponent {
   constructor(
     private formBuilder: FormBuilder,
     public ventana: MatDialog,
+    private datosService: DatosService,
     public loginService: LoginService,
     public dialogRef: MatDialogRef<ServidoresAnadirComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -107,6 +109,11 @@ export class ServidoresAnadirComponent {
       detalle_servidor_test: this.detalle_test,
       detalle_servidor_prod: this.detalle_prod,
     });
+
+    //Añadir servidor a catalogo_servidor
+    const params = {Nombre: this.servidor.Nombre, Descripcion: this.servidor.Descripcion, Tipo:this.servidor.Tipo, NoColaborador: this.numemp}
+    let idservidor = this.datosService.addServidor(params)
+
   }
   MensajeError(nombre_campo: string) {
     const campo = this.form.get(nombre_campo);
