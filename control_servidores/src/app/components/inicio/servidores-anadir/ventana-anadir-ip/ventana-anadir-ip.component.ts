@@ -14,6 +14,16 @@ export class VentanaAnadirIpComponent {
   formValue:any;
   form: FormGroup;
 
+  tipos_serv: any[] = [
+    { value: 'Tester', viewValue: 'Tester' },
+    { value: 'Desarrollo', viewValue: 'Desarrollo' },
+    { value: 'Produccion', viewValue: 'Produccion' },
+  ];
+  estat: any[] = [
+    { value: 'Apagado', viewValue: 'Apagado' },
+    { value: 'Ejecutandose', viewValue: 'Ejecutandose' },
+  ]
+
     constructor(
       private formBuilder: FormBuilder,
       public dialogRef: MatDialogRef<VentanaAnadirIpComponent>,

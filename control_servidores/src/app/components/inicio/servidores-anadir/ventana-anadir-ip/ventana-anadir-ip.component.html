@@ -1,94 +1,145 @@
 <mat-toolbar>{{ data.titulo }}</mat-toolbar>
 <div mat-dialog-content>
-  <form [formGroup]="form" (ngSubmit)="cerrarVentana()">
-    <mat-grid-list cols="2" rowHeight="90px">
-      <mat-grid-tile [colspan]="2" [rowspan]="1">
-        <mat-form-field class="input_form" appearance="outline">
-          <mat-label>IP</mat-label>
-          <input matInput formControlName="ip" type="text" [(ngModel)]="data.servidor.IpDireccion" required />
-          <mat-error *ngIf="form.get('ip')?.errors">
-            {{ MensajeError("ip") }}
-          </mat-error>
-        </mat-form-field>
+  <div *ngIf="data.servidor != undefined; else elseBlock">
+    <form [formGroup]="form" (ngSubmit)="cerrarVentana()">
+      <mat-grid-list cols="2" rowHeight="90px">
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field class="input_form" appearance="outline">
+            <mat-label>IP</mat-label>
+            <input
+              matInput
+              formControlName="ip"
+              type="text"
+              [(ngModel)]="data.servidor.IpDireccion"
+              required
+            />
+            <mat-error *ngIf="form.get('ip')?.errors">
+              {{ MensajeError("ip") }}
+            </mat-error>
+          </mat-form-field>
 
-        <mat-form-field class="input_form" appearance="outline">
-          <mat-label>DNS</mat-label>
-          <input matInput formControlName="dns" type="text"  [(ngModel)]="data.servidor.Dns" required />
-          <mat-error *ngIf="form.get('dns')?.errors">
-            {{ MensajeError("dns") }}
-          </mat-error>
-        </mat-form-field>
-      </mat-grid-tile>
-
-      <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field class="input_form" appearance="outline">
+            <mat-label>DNS</mat-label>
+            <input
+              matInput
+              formControlName="dns"
+              type="text"
+              [(ngModel)]="data.servidor.Dns"
+              required
+            />
+            <mat-error *ngIf="form.get('dns')?.errors">
+              {{ MensajeError("dns") }}
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
         <mat-form-field class="input_form" appearance="outline">
           <mat-label>Tipo</mat-label>
-          <input matInput formControlName="tipo_serv" type="text"  [(ngModel)]="data.servidor.Tipo" required />
+          <mat-select formControlName="tipo_serv" required [(ngModel)]="data.servidor.tipo">
+            <mat-option
+              *ngFor="let servidor of tipos_serv"
+              [value]="servidor.value"
+
+            >
+              {{ servidor.viewValue }}
+            </mat-option>
+          </mat-select>
           <mat-error *ngIf="form.get('tipo_serv')?.errors">
             {{ MensajeError("tipo_serv") }}
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field class="input_form" appearance="outline">
-          <mat-label>Versión</mat-label>
-          <input matInput formControlName="version" type="text"  [(ngModel)]="data.servidor.NoVersion" required />
-          <mat-error *ngIf="form.get('version')?.errors">
-            {{ MensajeError("version") }}
-          </mat-error>
-        </mat-form-field>
-      </mat-grid-tile>
-
-      <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field class="input_form" appearance="outline">
+            <mat-label>Versión</mat-label>
+            <input
+              matInput
+              formControlName="version"
+              type="text"
+              [(ngModel)]="data.servidor.NoVersion"
+              required
+            />
+            <mat-error *ngIf="form.get('version')?.errors">
+              {{ MensajeError("version") }}
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
         <mat-form-field class="input_form" appearance="outline">
           <mat-label>Estatus</mat-label>
-          <input matInput formControlName="estatus" type="text"  [(ngModel)]="data.servidor.Estatus" required />
+          <mat-select formControlName="estatus" required [(ngModel)]="data.servidor.estatus">
+            <mat-option
+              *ngFor="let estatus of estat"
+              [value]="estatus.value"
+
+            >
+              {{ estatus.viewValue }}
+            </mat-option>
+          </mat-select>
           <mat-error *ngIf="form.get('estatus')?.errors">
             {{ MensajeError("estatus") }}
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field class="input_form" appearance="outline">
-          <mat-label>Hostname</mat-label>
-          <input matInput formControlName="hostname" type="text"  [(ngModel)]="data.servidor.Hostname" required />
-          <mat-error *ngIf="form.get('hostname')?.errors">
-            {{ MensajeError("hostname") }}
-          </mat-error>
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="2" [rowspan]="1">
-        <mat-form-field class="input_form" appearance="outline">
-          <mat-label>Sistema operativo</mat-label>
-          <input
-            matInput
-            formControlName="sistema_operativo"
-            type="text"
-            [(ngModel)]="data.servidor.SistemaOperativo"
-            required
-          />
-          <mat-error *ngIf="form.get('sistema_operativo')?.errors">
-            {{ MensajeError("sistema_operativo") }}
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field class="input_form" appearance="outline">
+            <mat-label>Hostname</mat-label>
+            <input
+              matInput
+              formControlName="hostname"
+              type="text"
+              [(ngModel)]="data.servidor.Hostname"
+              required
+            />
+            <mat-error *ngIf="form.get('hostname')?.errors">
+              {{ MensajeError("hostname") }}
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field class="input_form" appearance="outline">
+            <mat-label>Sistema operativo</mat-label>
+            <input
+              matInput
+              formControlName="sistema_operativo"
+              type="text"
+              [(ngModel)]="data.servidor.SistemaOperativo"
+              required
+            />
+            <mat-error *ngIf="form.get('sistema_operativo')?.errors">
+              {{ MensajeError("sistema_operativo") }}
+            </mat-error>
+          </mat-form-field>
 
-        <mat-form-field class="input_form" appearance="outline">
-          <mat-label>Versión SO</mat-label>
-          <input matInput formControlName="ver_so" type="text"  [(ngModel)]="data.servidor.VersionSO" required />
-          <mat-error *ngIf="form.get('ver_so')?.errors">
-            {{ MensajeError("ver_so") }}
-          </mat-error>
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="2" [rowspan]="1">
-        <mat-form-field class="input_form" appearance="outline">
-          <mat-label>Versión de base de datos</mat-label>
-          <input matInput formControlName="ver_bd" type="text"  [(ngModel)]="data.servidor.VersionBD" required />
-          <mat-error *ngIf="form.get('ver_bd')?.errors">
-            {{ MensajeError("ver_bd") }}
-          </mat-error>
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="2" [rowspan]="1">
-        <div mat-dialog-actions>
+          <mat-form-field class="input_form" appearance="outline">
+            <mat-label>Versión SO</mat-label>
+            <input
+              matInput
+              formControlName="ver_so"
+              type="text"
+              [(ngModel)]="data.servidor.VersionSO"
+              required
+            />
+            <mat-error *ngIf="form.get('ver_so')?.errors">
+              {{ MensajeError("ver_so") }}
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field class="input_form" appearance="outline">
+            <mat-label>Versión de base de datos</mat-label>
+            <input
+              matInput
+              formControlName="ver_bd"
+              type="text"
+              [(ngModel)]="data.servidor.VersionBD"
+              required
+            />
+            <mat-error *ngIf="form.get('ver_bd')?.errors">
+              {{ MensajeError("ver_bd") }}
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <div mat-dialog-actions>
             <button
               type="submit"
               class="button_login"
@@ -101,8 +152,127 @@
             </button>
           </div>
         </mat-grid-tile>
-    </mat-grid-list>
-    
-  </form>
-</div>
+      </mat-grid-list>
+    </form>
+  </div>
+  <ng-template #elseBlock>
+  <form #elseBlock [formGroup]="form" (ngSubmit)="cerrarVentana()">
+    <mat-grid-list cols="2" rowHeight="90px">
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-form-field class="input_form" appearance="outline">
+          <mat-label>IP</mat-label>
+          <input matInput formControlName="ip" type="text" required />
+          <mat-error *ngIf="form.get('ip')?.errors">
+            {{ MensajeError("ip") }}
+          </mat-error>
+        </mat-form-field>
 
+        <mat-form-field class="input_form" appearance="outline">
+          <mat-label>DNS</mat-label>
+          <input matInput formControlName="dns" type="text" required />
+          <mat-error *ngIf="form.get('dns')?.errors">
+            {{ MensajeError("dns") }}
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-form-field class="input_form" appearance="outline">
+          <mat-label>Tipo</mat-label>
+          <mat-select formControlName="tipo_serv" required >
+            <mat-option
+              *ngFor="let servidor of tipos_serv"
+              [value]="servidor.value"
+
+            >
+              {{ servidor.viewValue }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('tipo_serv')?.errors">
+            {{ MensajeError("tipo_serv") }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="input_form" appearance="outline">
+          <mat-label>Versión</mat-label>
+          <input matInput formControlName="version" type="text" required />
+          <mat-error *ngIf="form.get('version')?.errors">
+            {{ MensajeError("version") }}
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-form-field class="input_form" appearance="outline">
+          <mat-label>Estatus</mat-label>
+          <mat-select formControlName="estatus" required>
+            <mat-option
+              *ngFor="let estatus of estat"
+              [value]="estatus.value"
+
+            >
+              {{ estatus.viewValue }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('estatus')?.errors">
+            {{ MensajeError("estatus") }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="input_form" appearance="outline">
+          <mat-label>Hostname</mat-label>
+          <input matInput formControlName="hostname" type="text" required />
+          <mat-error *ngIf="form.get('hostname')?.errors">
+            {{ MensajeError("hostname") }}
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-form-field class="input_form" appearance="outline">
+          <mat-label>Sistema operativo</mat-label>
+          <input
+            matInput
+            formControlName="sistema_operativo"
+            type="text"
+            required
+          />
+          <mat-error *ngIf="form.get('sistema_operativo')?.errors">
+            {{ MensajeError("sistema_operativo") }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="input_form" appearance="outline">
+          <mat-label>Versión SO</mat-label>
+          <input matInput formControlName="ver_so" type="text" required />
+          <mat-error *ngIf="form.get('ver_so')?.errors">
+            {{ MensajeError("ver_so") }}
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-form-field class="input_form" appearance="outline">
+          <mat-label>Versión de base de datos</mat-label>
+          <input matInput formControlName="ver_bd" type="text" required />
+          <mat-error *ngIf="form.get('ver_bd')?.errors">
+            {{ MensajeError("ver_bd") }}
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <div mat-dialog-actions>
+          <button
+            type="submit"
+            class="button_login"
+            mat-raised-button
+            cdkFocusInitial
+            [disabled]="form.invalid"
+            color="primary"
+          >
+            Guardar
+          </button>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</ng-template>
+</div>

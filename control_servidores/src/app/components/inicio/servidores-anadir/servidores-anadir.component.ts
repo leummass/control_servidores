@@ -35,6 +35,10 @@ export class ServidoresAnadirComponent {
     { value: 'Desarrollo', viewValue: 'Desarrollo' },
     { value: 'Produccion', viewValue: 'Produccion' },
   ];
+  estat: any[] = [
+    { value: 'Apagado', viewValue: 'Apagado' },
+    { value: 'Ejecutandose', viewValue: 'Ejecutandose' },
+  ]
   constructor(
     private formBuilder: FormBuilder,
     public ventana: MatDialog,
@@ -97,7 +101,7 @@ export class ServidoresAnadirComponent {
       0,
       '',
       formValue.nombre_servidor,
-      formValue.Tipo,
+      formValue.tipo,
       '',
       formValue.descripcion,
       this.setFecha(),
@@ -112,7 +116,23 @@ export class ServidoresAnadirComponent {
 
     //Añadir servidor a catalogo_servidor
     const params = {Nombre: this.servidor.Nombre, Descripcion: this.servidor.Descripcion, Tipo:this.servidor.Tipo, NoColaborador: this.numemp}
-    let idservidor = this.datosService.addServidor(params)
+    let idservidor;
+    this.datosService.addServidor(params).subscribe((data) => {
+      idservidor = data;
+      const params_tester = {IdServidor: idservidor, IpDireccion:  this.detalle_test.IpDireccion, Dns:  this.detalle_test.Dns, Tipo:  this.detalle_test.Tipo, NoVersion:  this.detalle_test.NoVersion, Estatus:  this.detalle_test.Estatus, Hostname:  this.detalle_test.Hostname, SistemaOperativo:  this.detalle_test.SistemaOperativo, VersionSO:  this.detalle_test.VersionSO, VersionBD:  this.detalle_test.VersionBD, NoColaborador: this.numemp}
+      const params_desarrollo =  {IdServidor: idservidor, IpDireccion:  this.detalle_des.IpDireccion, Dns:  this.detalle_des.Dns, Tipo:  this.detalle_des.Tipo, NoVersion:  this.detalle_des.NoVersion, Estatus:  this.detalle_des.Estatus, Hostname:  this.detalle_des.Hostname, SistemaOperativo:  this.detalle_des.SistemaOperativo, VersionSO:  this.detalle_des.VersionSO, VersionBD:  this.detalle_des.VersionBD, NoColaborador: this.numemp}
+      const params_produccion = {IdServidor: idservidor, IpDireccion:  this.detalle_prod.IpDireccion, Dns:  this.detalle_prod.Dns, Tipo:  this.detalle_prod.Tipo, NoVersion:  this.detalle_prod.NoVersion, Estatus:  this.detalle_prod.Estatus, Hostname:  this.detalle_prod.Hostname, SistemaOperativo:  this.detalle_prod.SistemaOperativo, VersionSO:  this.detalle_prod.VersionSO, VersionBD:  this.detalle_prod.VersionBD, NoColaborador: this.numemp}
+      this.datosService.addDetalleServidor(params_tester).subscribe((data) => {
+        console.log(data)
+      })
+      this.datosService.addDetalleServidor(params_desarrollo).subscribe((data) => {
+        console.log(data)
+      })
+      this.datosService.addDetalleServidor(params_produccion).subscribe((data) => {
+        console.log(data)
+      })
+    });
+    console.log(idservidor)
 
   }
   MensajeError(nombre_campo: string) {

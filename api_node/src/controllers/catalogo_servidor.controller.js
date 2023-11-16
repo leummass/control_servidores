@@ -10,7 +10,7 @@ export const getServidores = async (req, res) => {
       .input("IpDireccion", ipdireccion)
       .input("Tipo",tipo)
       .query("EXEC sp_ObtenerListaServidores @Nombre, @IpDireccion, @Tipo");
-      console.log(result.recordset)
+      
     res.json(result.recordset);
   } catch (err) {
     res.status(500);
@@ -32,7 +32,7 @@ export const addServidor = async (req, res) => {
       .output("Id", sql.Int)
       .query("EXEC sp_GuardarServidor @Nombre, @Descripcion, @Tipo, @NoColaborador, @Id OUTPUT");
       const outputpar = result.output.Id
-      res.json({outputpar})
+      res.json(outputpar)
   } catch (err) {
     res.status(500);
     res.send(err.message);

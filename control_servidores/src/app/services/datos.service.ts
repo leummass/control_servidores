@@ -33,5 +33,18 @@ export class DatosService{
     }
 
     //INSERCIONES
-
+    addServidor(params:any):Observable<number>{
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json'
+        })
+        console.log(params)
+        return this.httpClient.post<number>(this.apiCatalogo_Servidor+"/anadir",params,{headers})
+    }
+    addDetalleServidor(params:any):Observable<string>{
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json'
+        })
+        console.log(params)
+        return this.httpClient.post<string>(this.apiCatalogo_DetalleServidor+"/anadir",params,{headers})
+    }
 }
