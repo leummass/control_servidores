@@ -19,6 +19,7 @@ export class VentanaAnadirIpComponent {
       public dialogRef: MatDialogRef<VentanaAnadirIpComponent>,
       @Inject(MAT_DIALOG_DATA) public data: any,
     ) {
+      console.log(data)
       this.form = this.formBuilder.group({
         ip: [
           '',

@@ -19,15 +19,20 @@ export const getServidores = async (req, res) => {
 };
 
 export const addServidor = async (req, res) => {
-  const { id, nombre } = req.body;
+  const { Nombre, Descripcion, Tipo, NoColaborador } = req.body;
 
   try {
     const pool = await getConnection();
-    await pool
+    const result = await pool
       .request()
-      .input("id", sql.Int, id)
-      .input("nombre", sql.VarChar, nombre)
-      .query("INSERT INTO Catalogo_servidor(id,nombre) VALUES (@id,@nombre)");
+      .input("Nombre", sql.VarChar, Nombre)
+      .input("Descripcion", sql.VarChar, Descripcion)
+      .input("Tipo", sql.VarChar, Tipo)
+      .input("NoColaborador", sql.Int, NoColaborador)
+      .output("Id", sql.Int)
+      .query("EXEC sp_GuardarServidor @Nombre, @Descripcion, @Tipo, @NoColaborador, @Id OUTPUT");
+      const outputpar = result.output.Id
+      res.json({outputpar})
   } catch (err) {
     res.status(500);
     res.send(err.message);

@@ -11,12 +11,14 @@ POST http://localhost:3001/catalogo_servidor
 
 ###
 
-POST http://localhost:3002/catalogo_servidor
+POST http://localhost:3001/catalogo_servidor/anadir
 Content-Type: application/json
 
 {
-    "id":"700",
-    "nombre":"asdf1"
+    "Nombre":"5905",
+    "Descripcion":"prueba",
+    "Tipo":"desarrollo",
+    "NoColaborador":"90317660"
 }
 
 ###

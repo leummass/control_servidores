@@ -16,6 +16,7 @@ export class DatosService{
     private apiCatalogo_Servicio = 'http://localhost:3001/catalogo_servicio'
     private apiCatalogo_DetalleServidor = 'http://localhost:3001/catalogo_detalleservidor';
 
+    //CONSULTAS
     getServidores(params:any):Observable<Catalogo_Servidor[]>{
         const headers = new HttpHeaders({
             'Content-Type': 'application/json'
@@ -30,5 +31,7 @@ export class DatosService{
     getDetalleServidor():Observable<Catalogo_DetalleServidor[]>{
         return this.httpClient.get<Catalogo_DetalleServidor[]>(this.apiCatalogo_DetalleServidor)
     }
+
+    //INSERCIONES
 
 }

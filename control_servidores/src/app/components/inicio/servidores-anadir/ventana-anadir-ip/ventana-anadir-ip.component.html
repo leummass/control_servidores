@@ -5,7 +5,7 @@
       <mat-grid-tile [colspan]="2" [rowspan]="1">
         <mat-form-field class="input_form" appearance="outline">
           <mat-label>IP</mat-label>
-          <input matInput formControlName="ip" type="text" required />
+          <input matInput formControlName="ip" type="text" [(ngModel)]="data.servidor.IpDireccion" required />
           <mat-error *ngIf="form.get('ip')?.errors">
             {{ MensajeError("ip") }}
           </mat-error>
@@ -13,7 +13,7 @@
 
         <mat-form-field class="input_form" appearance="outline">
           <mat-label>DNS</mat-label>
-          <input matInput formControlName="dns" type="text" required />
+          <input matInput formControlName="dns" type="text"  [(ngModel)]="data.servidor.Dns" required />
           <mat-error *ngIf="form.get('dns')?.errors">
             {{ MensajeError("dns") }}
           </mat-error>
@@ -23,7 +23,7 @@
       <mat-grid-tile [colspan]="2" [rowspan]="1">
         <mat-form-field class="input_form" appearance="outline">
           <mat-label>Tipo</mat-label>
-          <input matInput formControlName="tipo_serv" type="text" required />
+          <input matInput formControlName="tipo_serv" type="text"  [(ngModel)]="data.servidor.Tipo" required />
           <mat-error *ngIf="form.get('tipo_serv')?.errors">
             {{ MensajeError("tipo_serv") }}
           </mat-error>
@@ -31,7 +31,7 @@
 
         <mat-form-field class="input_form" appearance="outline">
           <mat-label>Versión</mat-label>
-          <input matInput formControlName="version" type="text" required />
+          <input matInput formControlName="version" type="text"  [(ngModel)]="data.servidor.NoVersion" required />
           <mat-error *ngIf="form.get('version')?.errors">
             {{ MensajeError("version") }}
           </mat-error>
@@ -41,7 +41,7 @@
       <mat-grid-tile [colspan]="2" [rowspan]="1">
         <mat-form-field class="input_form" appearance="outline">
           <mat-label>Estatus</mat-label>
-          <input matInput formControlName="estatus" type="text" required />
+          <input matInput formControlName="estatus" type="text"  [(ngModel)]="data.servidor.Estatus" required />
           <mat-error *ngIf="form.get('estatus')?.errors">
             {{ MensajeError("estatus") }}
           </mat-error>
@@ -49,7 +49,7 @@
 
         <mat-form-field class="input_form" appearance="outline">
           <mat-label>Hostname</mat-label>
-          <input matInput formControlName="hostname" type="text" required />
+          <input matInput formControlName="hostname" type="text"  [(ngModel)]="data.servidor.Hostname" required />
           <mat-error *ngIf="form.get('hostname')?.errors">
             {{ MensajeError("hostname") }}
           </mat-error>
@@ -62,6 +62,7 @@
             matInput
             formControlName="sistema_operativo"
             type="text"
+            [(ngModel)]="data.servidor.SistemaOperativo"
             required
           />
           <mat-error *ngIf="form.get('sistema_operativo')?.errors">
@@ -71,7 +72,7 @@
 
         <mat-form-field class="input_form" appearance="outline">
           <mat-label>Versión SO</mat-label>
-          <input matInput formControlName="ver_so" type="text" required />
+          <input matInput formControlName="ver_so" type="text"  [(ngModel)]="data.servidor.VersionSO" required />
           <mat-error *ngIf="form.get('ver_so')?.errors">
             {{ MensajeError("ver_so") }}
           </mat-error>
@@ -80,7 +81,7 @@
       <mat-grid-tile [colspan]="2" [rowspan]="1">
         <mat-form-field class="input_form" appearance="outline">
           <mat-label>Versión de base de datos</mat-label>
-          <input matInput formControlName="ver_bd" type="text" required />
+          <input matInput formControlName="ver_bd" type="text"  [(ngModel)]="data.servidor.VersionBD" required />
           <mat-error *ngIf="form.get('ver_bd')?.errors">
             {{ MensajeError("ver_bd") }}
           </mat-error>

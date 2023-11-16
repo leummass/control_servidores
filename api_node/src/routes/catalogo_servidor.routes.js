@@ -4,9 +4,9 @@ import { getServidores, addServidor, getServidorById, deleteServidorById, update
 
 const router = Router()
 
-router.post('/catalogo_servidor', getServidores)
+router.post('/catalogo_servidor', getServidores) //obtiene todos los servidores
 
-router.post('/catalogo_servidor', addServidor)
+router.post('/catalogo_servidor/anadir', addServidor) //añade un servidor
 
 router.get('/catalogo_servidor/:id', getServidorById)
 
