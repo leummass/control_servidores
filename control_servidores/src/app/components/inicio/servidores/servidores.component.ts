@@ -30,6 +30,7 @@ export class ServidoresComponent {
     { value: 'Tester', viewValue: 'Tester' },
     { value: 'Desarrollo', viewValue: 'Desarrollo' },
     { value: 'Produccion', viewValue: 'Produccion' },
+    { value: 'DRP', viewValue: 'DRP'}
   ];
 
   constructor(
@@ -101,9 +102,11 @@ export class ServidoresComponent {
     let servidor_tester;
     let servidor_produccion;
     let servidor_desarrollo;
+    let servidor_drp;
     let ip_tester = '',
       ip_produccion = '',
-      ip_desarrollo = '';
+      ip_desarrollo = '',
+      ip_drp = '';
     let detalles_servidor: Catalogo_DetalleServidor[] =
       this.retornaDetallesServidorFilter(servidor.IdServidor);
     console.log(detalles_servidor);
@@ -120,6 +123,10 @@ export class ServidoresComponent {
         'desarrollo',
         detalles_servidor
       );
+      servidor_drp = this.retornaDetalleServidorFilter(
+        'drp',
+        detalles_servidor
+      );
       if (servidor_tester != null) {
         ip_tester = servidor_tester.IpDireccion;
       }
@@ -128,6 +135,9 @@ export class ServidoresComponent {
       }
       if (servidor_desarrollo != null) {
         ip_desarrollo = servidor_desarrollo.IpDireccion;
+      }
+      if (servidor_drp != null) {
+        ip_drp = servidor_drp.IpDireccion;
       }
       datas = {
         nombre: servidor.Nombre,
@@ -139,6 +149,7 @@ export class ServidoresComponent {
         detalle_serv_prod: servidor_produccion,
         detalle_serv_test: servidor_tester,
         detalle_serv_des: servidor_desarrollo,
+        detalle_serv_drp: servidor_drp,
         edicion: 'editar',
         titulo: 'Editar servidor'
       };
@@ -155,10 +166,12 @@ export class ServidoresComponent {
       if(result != undefined){
         servidor_tester = result.detalle_servidor_des;
         servidor_produccion = result.detalle_servidor_prod;
-        servidor_desarrollo = result.detalle_servidor_test
+        servidor_desarrollo = result.detalle_servidor_test;
+        servidor_drp = result.detalle_servidor_drp;
         console.log('des', servidor_desarrollo);
         console.log('prod', servidor_produccion);
         console.log('test', servidor_desarrollo);
+        console.log('drp', servidor_drp);
       }
     });
   }

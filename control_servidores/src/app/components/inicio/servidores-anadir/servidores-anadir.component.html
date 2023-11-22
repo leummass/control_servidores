@@ -35,7 +35,7 @@
         <mat-grid-tile [colspan]="4" [rowspan]="1">
           <mat-form-field class="input_form" appearance="outline">
             <mat-label>IP DRP</mat-label>
-            <input matInput formControlName="ip_drp" type="text" required readonly />
+            <input matInput formControlName="ip_drp" type="text" required readonly [(ngModel)]="data.ip_drp"/>
 
             <mat-error *ngIf="form.get('ip_drp')?.errors">
               {{ MensajeError("ip_drp") }}
